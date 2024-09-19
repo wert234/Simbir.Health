@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C3FD856F-DBB8-424B-8FD4-EA7055167364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{723975A5-A66D-48AE-BDB2-C9F988E0FE2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8BBD358E-2319-433A-A107-E3F3E4E21747}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{17EAB1FA-2569-4197-AC1A-0A6EE37E1383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{50C0766E-0019-4754-B2C5-E780C4FA94A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "src\Service\Gateway\Gateway.csproj", "{91A8E03F-7152-4733-904D-B797B6281E7B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{347D2054-D1AC-4DF5-A592-A98EC5EE0D2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91A8E03F-7152-4733-904D-B797B6281E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A8E03F-7152-4733-904D-B797B6281E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A8E03F-7152-4733-904D-B797B6281E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A8E03F-7152-4733-904D-B797B6281E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347D2054-D1AC-4DF5-A592-A98EC5EE0D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347D2054-D1AC-4DF5-A592-A98EC5EE0D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347D2054-D1AC-4DF5-A592-A98EC5EE0D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347D2054-D1AC-4DF5-A592-A98EC5EE0D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{723975A5-A66D-48AE-BDB2-C9F988E0FE2B} = {C3FD856F-DBB8-424B-8FD4-EA7055167364}
+		{8BBD358E-2319-433A-A107-E3F3E4E21747} = {C3FD856F-DBB8-424B-8FD4-EA7055167364}
+		{17EAB1FA-2569-4197-AC1A-0A6EE37E1383} = {C3FD856F-DBB8-424B-8FD4-EA7055167364}
+		{50C0766E-0019-4754-B2C5-E780C4FA94A9} = {17EAB1FA-2569-4197-AC1A-0A6EE37E1383}
+		{91A8E03F-7152-4733-904D-B797B6281E7B} = {17EAB1FA-2569-4197-AC1A-0A6EE37E1383}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03682DF0-2953-4740-B624-E0CF0E74B032}
+	EndGlobalSection
+EndGlobal
