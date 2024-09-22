@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Sherad\Sherad.Application\Sherad.Application.csproj" />
     <ProjectReference Include="..\Domain\Account.Domain.csproj" />
   </ItemGroup>
 

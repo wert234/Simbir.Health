@@ -12,9 +12,9 @@ namespace Sherad.Application.Repositories
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetAsync(TKey id);
-        Task<T> AddAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(TKey id);
+        Task AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(TKey id);
 
         Task SaveAsync(CancellationToken token = default);
     }
