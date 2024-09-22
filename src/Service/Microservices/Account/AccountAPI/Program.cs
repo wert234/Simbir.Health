@@ -2,6 +2,7 @@ using Account.Application.Commands;
 using Account.Application.Handlers;
 using Account.Application.Validators;
 using Account.Domain.Entitys;
+using Account.Domain.Tokens.JWT;
 using Account.Infrastructure.Data.DbContexts;
 using Account.Infrastructure.Repositories;
 using FluentValidation;

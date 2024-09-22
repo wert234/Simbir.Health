@@ -29,8 +29,13 @@ namespace Sherad.Application.Behaviors
                 return await next();
             }
 
-            var errors = _validators
-                .Select(validator => validator.Validate(request))
+            var context = new ValidationContext<TRequest>(request);
+
+            var validationResults = await Task.WhenAll(_validators
+                .Select(validator => validator
+                .ValidateAsync(context, cancellationToken)));
+
+            var errors = validationResults
                 .Where(validator => !validator.IsValid)
                 .Select(validator => validator.ToString("\n"))
                 .ToList();
