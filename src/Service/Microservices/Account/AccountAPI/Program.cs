@@ -1,8 +1,12 @@
 using Account.Application.Commands;
 using Account.Application.Handlers;
 using Account.Application.Validators;
-using Account.Domain.Entitys;
-using Account.Domain.Tokens.JWT;
+using Account.Domain.Entitys.Account;
+using Account.Domain.Entitys.Tokens.Common;
+using Account.Domain.Entitys.Tokens.JWT;
+
+
+//using Account.Domain.Tokens.JWT;
 using Account.Infrastructure.Data.DbContexts;
 using Account.Infrastructure.Repositories;
 using FluentValidation;
@@ -32,9 +36,9 @@ builder.Services.AddMediatR(options =>
 });
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
 builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
+builder.Services.AddSingleton<ITokenGenerator, JwtTokenGenerator>();
 
 var app = builder.Build();
 

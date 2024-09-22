@@ -1,4 +1,4 @@
-﻿using Account.Domain.Entitys;
+﻿using Account.Domain.Entitys.Account;
 using Account.Infrastructure.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Sherad.Application.Repositories;

@@ -5,9 +5,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Account.Domain.Entitys
+namespace Account.Domain.Entitys.Account
 {
-    public class User 
+    public class User
     {
         public Guid Id { get; set; }
         public List<Role> Roles { get; set; }
