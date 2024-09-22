@@ -1,5 +1,6 @@
 ﻿using Account.Domain.Entitys;
 using Account.Infrastructure.Data.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using Sherad.Application.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,24 +20,27 @@ namespace Account.Infrastructure.Repositories
             _context = context;
         }
 
-        public Task AddAsync(User entity)
+
+        public async Task AddAsync(User entity)
         {
-            throw new NotImplementedException();
+           await _context.AddAsync(entity);
+           await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            _context.Users.Remove(await GetAsync(id));
+            await _context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<User>> GetAllAsync()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Users.ToArrayAsync();
         }
 
-        public Task<User> GetAsync(Guid id)
+        public async Task<User> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
         }
 
         public async Task SaveAsync(CancellationToken token = default)
@@ -44,9 +48,10 @@ namespace Account.Infrastructure.Repositories
             await _context.SaveChangesAsync(token);
         }
 
-        public Task UpdateAsync(User entity)
+        public async Task UpdateAsync(User entity)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }
