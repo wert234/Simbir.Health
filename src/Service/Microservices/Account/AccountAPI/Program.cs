@@ -1,9 +1,13 @@
 using Account.Application.Commands;
 using Account.Application.Handlers;
+using Account.Application.Validators;
 using Account.Domain.Entitys;
 using Account.Infrastructure.Data.DbContexts;
 using Account.Infrastructure.Repositories;
+using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Sherad.Application.Behaviors;
 using Sherad.Application.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +30,10 @@ builder.Services.AddMediatR(options =>
         );
 });
 
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
+builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 
 var app = builder.Build();
 
