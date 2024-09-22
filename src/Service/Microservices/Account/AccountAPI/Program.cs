@@ -1,5 +1,10 @@
+using Account.Application.Commands;
+using Account.Application.Handlers;
+using Account.Domain.Entitys;
 using Account.Infrastructure.Data.DbContexts;
+using Account.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Sherad.Application.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +16,17 @@ builder.Services.AddDbContext<AccountDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
+
+builder.Services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssemblies(
+
+        typeof(SignUpHandler).Assembly,
+        typeof(SignUpCommand).Assembly
+        );
+});
+
+builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 
 var app = builder.Build();
 
