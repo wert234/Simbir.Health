@@ -38,6 +38,7 @@ builder.Services.AddMediatR(options =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
+builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddSingleton<ITokenGenerator, JwtTokenGenerator>();
 
 var app = builder.Build();
