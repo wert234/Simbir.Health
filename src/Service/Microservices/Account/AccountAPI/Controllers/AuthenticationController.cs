@@ -1,7 +1,6 @@
 ﻿using Account.Application.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountAPI.Controllers
@@ -23,6 +22,11 @@ namespace AccountAPI.Controllers
         [HttpPost("SignUp")]
         [AllowAnonymous]
         public async Task<IActionResult> SignUp(SignUpCommand command)
+            => await _mediator.Send(command);
+
+        [HttpPost("SignIn")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SignIn(SignInCommand command)
             => await _mediator.Send(command);
     }
 }

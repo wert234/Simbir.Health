@@ -28,7 +28,10 @@ builder.Services.AddMediatR(options =>
     options.RegisterServicesFromAssemblies(
 
         typeof(SignUpHandler).Assembly,
-        typeof(SignUpCommand).Assembly
+        typeof(SignUpCommand).Assembly,
+
+        typeof(SignInHandler).Assembly,
+        typeof(SignInCommand).Assembly
         );
 });
 
