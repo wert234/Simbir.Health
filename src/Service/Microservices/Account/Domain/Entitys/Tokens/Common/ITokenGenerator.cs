@@ -1,15 +1,20 @@
 ﻿using Account.Domain.Entitys.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Security.Cryptography;
 namespace Account.Domain.Entitys.Tokens.Common
 {
     public interface ITokenGenerator
     {
-        string GenerateToken(User user, List<Claim> roles);
+        string GenerateAccessToken(User user, List<Claim> roles);
+        string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
+        }
+        object GetPrincipalFromExpiredToken(string token);
     }
 }

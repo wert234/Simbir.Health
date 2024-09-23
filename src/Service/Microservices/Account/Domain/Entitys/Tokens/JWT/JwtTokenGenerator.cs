@@ -26,7 +26,7 @@ namespace Account.Domain.Entitys.Tokens.JWT
         }
 
 
-        public string GenerateToken(User user, List<Claim> roles)
+        public string GenerateAccessToken(User user, List<Claim> roles)
         {
             var token = new JwtSecurityToken(
                 issuer:_jwtOptions.Issuer,
@@ -40,6 +40,30 @@ namespace Account.Domain.Entitys.Tokens.JWT
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        public object GetPrincipalFromExpiredToken(string token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = 
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SigningKey)),
+                ValidateLifetime = false
+            };
+
+            var principal = new JwtSecurityTokenHandler()
+                .ValidateToken(token, tokenValidationParameters, out SecurityToken validatedToken);
+
+            if(validatedToken == null ||
+                !(validatedToken as JwtSecurityToken).Header.Alg
+                .Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return (isSuccess: false, result: "Некоректный токен");
+            }
+
+            return (isSuccess: true, result: principal);
         }
     }
 }

@@ -4,9 +4,6 @@ using Account.Application.Validators;
 using Account.Domain.Entitys.Account;
 using Account.Domain.Entitys.Tokens.Common;
 using Account.Domain.Entitys.Tokens.JWT;
-
-
-//using Account.Domain.Tokens.JWT;
 using Account.Infrastructure.Data.DbContexts;
 using Account.Infrastructure.Repositories;
 using FluentValidation;
