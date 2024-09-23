@@ -73,6 +73,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
+builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();
 builder.Services.AddSingleton<ITokenGenerator, JwtTokenGenerator>();
 
 
