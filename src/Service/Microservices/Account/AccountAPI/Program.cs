@@ -62,7 +62,10 @@ builder.Services.AddMediatR(options =>
         typeof(SignUpCommand).Assembly,
 
         typeof(SignInHandler).Assembly,
-        typeof(SignInCommand).Assembly
+        typeof(SignInCommand).Assembly,
+
+        typeof(SignOutHandler).Assembly,
+        typeof(SignOutCommand).Assembly
         );
 });
 

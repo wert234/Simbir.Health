@@ -28,5 +28,9 @@ namespace AccountAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> SignIn(SignInCommand command)
             => await _mediator.Send(command);
+
+        [HttpPut("SignOut")]
+        public async Task<IActionResult> SignOut(SignOutCommand command)
+            => await _mediator.Send(command);
     }
 }
