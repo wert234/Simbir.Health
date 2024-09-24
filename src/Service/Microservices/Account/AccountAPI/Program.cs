@@ -81,6 +81,7 @@ builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();
+builder.Services.AddScoped<IValidator<RefreshCommand>, RefreshCommandValidator>();
 builder.Services.AddSingleton<ITokenService, JwtTokenGenerator>();
 
 
