@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Account.Domain.Entitys.Tokens.JWT
 {
-    public class JwtTokenGenerator : ITokenGenerator
+    public class JwtTokenGenerator : ITokenService
     {
         private readonly IConfiguration _configuration;
          private readonly JwtOptions _jwtOptions;
@@ -41,7 +41,7 @@ namespace Account.Domain.Entitys.Tokens.JWT
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        public object GetPrincipalFromExpiredToken(string token)
+        public (bool isSuccess, object result) GetPrincipalFromToken(string token)
         {
             var tokenValidationParameters = new TokenValidationParameters
             {
@@ -50,7 +50,7 @@ namespace Account.Domain.Entitys.Tokens.JWT
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = 
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SigningKey)),
-                ValidateLifetime = false
+                ValidateLifetime = true,
             };
 
             var principal = new JwtSecurityTokenHandler()
@@ -58,7 +58,8 @@ namespace Account.Domain.Entitys.Tokens.JWT
 
             if(validatedToken == null ||
                 !(validatedToken as JwtSecurityToken).Header.Alg
-                .Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                .Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase) ||
+                validatedToken.ValidTo < DateTime.UtcNow)
             {
                 return (isSuccess: false, result: "Некоректный токен");
             }

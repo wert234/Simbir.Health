@@ -17,10 +17,10 @@ namespace Account.Application.Handlers
     public class SignInHandler : IRequestHandler<SignInCommand, IActionResult>
     {
         private readonly IRepository<User, Guid> _accountRepository;
-        private readonly ITokenGenerator _tokenGenerator;
+        private readonly ITokenService _tokenGenerator;
 
 
-        public SignInHandler(IRepository<User, Guid> accountRepository, ITokenGenerator tokenGenerator)
+        public SignInHandler(IRepository<User, Guid> accountRepository, ITokenService tokenGenerator)
         {
             _accountRepository = accountRepository;
             _tokenGenerator = tokenGenerator;

@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 namespace Account.Domain.Entitys.Tokens.Common
 {
-    public interface ITokenGenerator
+    public interface ITokenService
     {
         string GenerateAccessToken(User user, List<Claim> roles);
         string GenerateRefreshToken()
@@ -15,6 +15,6 @@ namespace Account.Domain.Entitys.Tokens.Common
                 return Convert.ToBase64String(randomNumber);
             }
         }
-        object GetPrincipalFromExpiredToken(string token);
+        (bool isSuccess, object result) GetPrincipalFromToken(string token);
     }
 }

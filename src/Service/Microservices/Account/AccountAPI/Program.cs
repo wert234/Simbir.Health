@@ -1,5 +1,6 @@
 using Account.Application.Commands;
 using Account.Application.Handlers;
+using Account.Application.Queries;
 using Account.Application.Validators;
 using Account.Domain.Entitys.Account;
 using Account.Domain.Entitys.Tokens.Common;
@@ -65,7 +66,10 @@ builder.Services.AddMediatR(options =>
         typeof(SignInCommand).Assembly,
 
         typeof(SignOutHandler).Assembly,
-        typeof(SignOutCommand).Assembly
+        typeof(SignOutCommand).Assembly,
+
+        typeof(ValidateHandler).Assembly,
+        typeof(ValidateQuery).Assembly
         );
 });
 
@@ -74,7 +78,7 @@ builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();
-builder.Services.AddSingleton<ITokenGenerator, JwtTokenGenerator>();
+builder.Services.AddSingleton<ITokenService, JwtTokenGenerator>();
 
 
 builder.Services.AddAuthentication(opt => {

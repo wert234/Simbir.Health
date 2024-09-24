@@ -1,7 +1,9 @@
 ﻿using Account.Application.Commands;
+using Account.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AccountAPI.Controllers
 {
@@ -32,5 +34,10 @@ namespace AccountAPI.Controllers
         [HttpPut("SignOut")]
         public async Task<IActionResult> SignOut(SignOutCommand command)
             => await _mediator.Send(command);
+
+        [HttpGet("Validate")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Validate(string accessToken)
+             => await _mediator.Send(new ValidateQuery(accessToken));
     }
 }
