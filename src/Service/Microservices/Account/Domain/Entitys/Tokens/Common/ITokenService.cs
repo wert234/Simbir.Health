@@ -12,7 +12,8 @@ namespace Account.Domain.Entitys.Tokens.Common
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(randomNumber);
-                return Convert.ToBase64String(randomNumber);
+                var token = Convert.ToBase64String(randomNumber);
+                return $"{token}_{Guid.NewGuid()}";
             }
         }
         (bool isSuccess, object result) GetPrincipalFromToken(string token);

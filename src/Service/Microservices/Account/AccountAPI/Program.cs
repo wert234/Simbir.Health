@@ -69,7 +69,10 @@ builder.Services.AddMediatR(options =>
         typeof(SignOutCommand).Assembly,
 
         typeof(ValidateHandler).Assembly,
-        typeof(ValidateQuery).Assembly
+        typeof(ValidateQuery).Assembly,
+
+        typeof(RefreshHandler).Assembly,
+        typeof(RefreshCommand).Assembly
         );
 });
 

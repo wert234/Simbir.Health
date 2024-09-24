@@ -39,5 +39,10 @@ namespace AccountAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Validate(string accessToken)
              => await _mediator.Send(new ValidateQuery(accessToken));
+
+        [HttpPost("Refresh")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Refresh(string refreshToken)
+            => await _mediator.Send(new RefreshCommand(refreshToken));
     }
 }
