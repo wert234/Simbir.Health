@@ -13,13 +13,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Account.Domain.Entitys.Tokens.JWT
 {
-    public class JwtTokenGenerator : ITokenService
+    public class JwtTokenService : ITokenService
     {
         private readonly IConfiguration _configuration;
          private readonly JwtOptions _jwtOptions;
 
 
-        public JwtTokenGenerator(IConfiguration configuration)
+        public JwtTokenService(IConfiguration configuration)
         {
             _configuration = configuration;
             _jwtOptions = _configuration.GetSection("JWT").Get<JwtOptions>();
@@ -50,7 +50,7 @@ namespace Account.Domain.Entitys.Tokens.JWT
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = 
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SigningKey)),
-                ValidateLifetime = true,
+                ValidateLifetime = false,
             };
 
             var principal = new JwtSecurityTokenHandler()

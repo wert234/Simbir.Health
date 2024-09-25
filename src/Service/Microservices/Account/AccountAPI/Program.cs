@@ -72,7 +72,10 @@ builder.Services.AddMediatR(options =>
         typeof(ValidateQuery).Assembly,
 
         typeof(RefreshHandler).Assembly,
-        typeof(RefreshCommand).Assembly
+        typeof(RefreshCommand).Assembly,
+
+        typeof(MeQuery).Assembly,
+        typeof(MeHandler).Assembly
         );
 });
 
@@ -82,7 +85,7 @@ builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();
 builder.Services.AddScoped<IValidator<RefreshCommand>, RefreshCommandValidator>();
-builder.Services.AddSingleton<ITokenService, JwtTokenGenerator>();
+builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 
 
 builder.Services.AddAuthentication(opt => {
