@@ -78,7 +78,10 @@ builder.Services.AddMediatR(options =>
         typeof(MeQuery).Assembly,
 
         typeof(UpdateHandler).Assembly,
-        typeof(UpdateCommand).Assembly
+        typeof(UpdateCommand).Assembly,
+
+        typeof(CreateAccountHandler).Assembly,
+        typeof(CreateAccountCommand).Assembly
         );
 });
 
