@@ -28,5 +28,10 @@ namespace AccountAPI.Controllers
         [HttpPut("Update")]
         public async Task<IActionResult> Update(UpdateCommand command)
             => await _mediator.Send(command);
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAccounts([FromQuery]int from, [FromQuery] int count)
+            => await _mediator.Send(new GetAccountsQuery(from, count));
     }
 }
