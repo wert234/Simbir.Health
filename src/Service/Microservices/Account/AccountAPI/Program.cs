@@ -85,6 +85,7 @@ builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();
 builder.Services.AddScoped<IValidator<RefreshCommand>, RefreshCommandValidator>();
+builder.Services.AddScoped<IValidator<MeQuery>, MeQueryValidator>();
 builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 
 
