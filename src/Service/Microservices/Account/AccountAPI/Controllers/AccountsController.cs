@@ -1,4 +1,5 @@
-﻿using Account.Application.Queries;
+﻿using Account.Application.Commands;
+using Account.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -23,5 +24,9 @@ namespace AccountAPI.Controllers
         [HttpGet("Me/{id}")]
         public async Task<IActionResult> Me(Guid id)
             => await _mediator.Send(new MeQuery(id));
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(UpdateCommand command)
+            => await _mediator.Send(command);
     }
 }

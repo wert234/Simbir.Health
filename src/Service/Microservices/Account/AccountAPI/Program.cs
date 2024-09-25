@@ -74,8 +74,11 @@ builder.Services.AddMediatR(options =>
         typeof(RefreshHandler).Assembly,
         typeof(RefreshCommand).Assembly,
 
+        typeof(MeHandler).Assembly,
         typeof(MeQuery).Assembly,
-        typeof(MeHandler).Assembly
+
+        typeof(UpdateHandler).Assembly,
+        typeof(UpdateCommand).Assembly
         );
 });
 
