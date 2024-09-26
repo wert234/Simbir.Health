@@ -35,7 +35,7 @@ namespace AccountAPI.Controllers
             => await _mediator.Send(new GetAccountsQuery(from, count));
 
         [HttpPost]
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAccount(CreateAccountCommand command)
             => await _mediator.Send(command);
     }
