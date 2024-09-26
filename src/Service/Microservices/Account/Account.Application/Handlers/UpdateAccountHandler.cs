@@ -1,4 +1,4 @@
-﻿using Account.Application.Queries;
+﻿using Account.Application.Commands;
 using Account.Domain.Entitys.Account;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

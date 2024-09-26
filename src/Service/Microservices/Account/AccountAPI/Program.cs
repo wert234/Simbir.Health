@@ -85,7 +85,10 @@ builder.Services.AddMediatR(options =>
         typeof(CreateAccountCommand).Assembly,
 
         typeof(UpdateAccountHandler).Assembly,
-        typeof(UpdateAccountCommand).Assembly
+        typeof(UpdateAccountCommand).Assembly,
+
+        typeof(DeleteAccountHandler).Assembly,
+        typeof(DeleteAccountCommand).Assembly
         );
 });
 

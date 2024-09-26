@@ -48,5 +48,10 @@ namespace AccountAPI.Controllers
                 command.FirstName,
                 command.Username,
                 command.Password));
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteAccount(Guid id)
+            => await _mediator.Send(new DeleteAccountCommand(id));
     }
 }

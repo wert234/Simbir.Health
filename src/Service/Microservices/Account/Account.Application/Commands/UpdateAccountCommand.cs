@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Account.Application.Queries
+namespace Account.Application.Commands
 {
     public class UpdateAccountCommand : IRequest<IActionResult>
     {
         [SwaggerSchema(ReadOnly = true)]
-        public Guid Id { get; private set; } 
+        public Guid Id { get; private set; }
         public List<Role> Roles { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
