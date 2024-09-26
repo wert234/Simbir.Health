@@ -35,10 +35,10 @@ namespace Account.Application.Handlers
                 BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.PasswordHash));
 
 
-            var accessToken = _tokenGenerator.GenerateAccessToken(user, new List<Claim>
-            {
-                new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.User)),
-            });
+            var accessToken = _tokenGenerator.GenerateAccessToken(user, user.Roles
+                .Select(role => new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), role)))
+                .ToList());
+
             var refreshToken = _tokenGenerator.GenerateRefreshToken();
 
             user.RefreshToken = refreshToken;
