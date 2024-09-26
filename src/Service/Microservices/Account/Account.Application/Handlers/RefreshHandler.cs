@@ -40,7 +40,11 @@ namespace Account.Application.Handlers
 
             await _accountRepository.UpdateAsync(user);
 
-            return new OkObjectResult(newAccessToken);
+            return new OkObjectResult(new Dictionary<string, string>
+            {
+                {"AccessToken", newAccessToken },
+                {"RefreshToken", newRefreshToken },
+            });
         }
     }
 }
