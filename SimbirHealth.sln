@@ -29,11 +29,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.Infrastructure", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sherad", "Sherad", "{84359952-1712-4442-94E0-A97EAB98A5DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherad.Domain", "src\Service\Sherad\Sherad.Domain\Sherad.Domain.csproj", "{D63702A8-CC4C-457F-AB6E-FB10A3122952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sherad.Domain", "src\Service\Sherad\Sherad.Domain\Sherad.Domain.csproj", "{D63702A8-CC4C-457F-AB6E-FB10A3122952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherad.Application", "src\Service\Sherad\Sherad.Application\Sherad.Application.csproj", "{9AF389B2-E3D7-478C-B7AE-68CE28358C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sherad.Application", "src\Service\Sherad\Sherad.Application\Sherad.Application.csproj", "{9AF389B2-E3D7-478C-B7AE-68CE28358C15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherad.Infrastructure", "src\Service\Sherad\Sherad.Infrastructure\Sherad.Infrastructure.csproj", "{4339528A-95F7-4A98-A348-D492DE99582A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sherad.Infrastructure", "src\Service\Sherad\Sherad.Infrastructure\Sherad.Infrastructure.csproj", "{4339528A-95F7-4A98-A348-D492DE99582A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hospital", "Hospital", "{03E2DF59-9592-49DA-9214-A66B2F8652EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalAPI", "src\Service\Microservices\Hospital\HospitalAPI\HospitalAPI.csproj", "{8196D133-19B1-43F1-9260-ECCC02F58C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Application", "src\Service\Microservices\Hospital\Hospital.Application\Hospital.Application.csproj", "{052D9699-D426-4478-9421-107562FA983F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Domain", "src\Service\Microservices\Hospital\Hospital.Domain\Hospital.Domain.csproj", "{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Infastructure", "src\Service\Microservices\Hospital\Hospital.Infastructure\Hospital.Infastructure.csproj", "{C0B6D0AD-EA1D-4497-BE67-F7D510867013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +87,22 @@ Global
 		{4339528A-95F7-4A98-A348-D492DE99582A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4339528A-95F7-4A98-A348-D492DE99582A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4339528A-95F7-4A98-A348-D492DE99582A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8196D133-19B1-43F1-9260-ECCC02F58C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8196D133-19B1-43F1-9260-ECCC02F58C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8196D133-19B1-43F1-9260-ECCC02F58C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8196D133-19B1-43F1-9260-ECCC02F58C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{052D9699-D426-4478-9421-107562FA983F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052D9699-D426-4478-9421-107562FA983F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052D9699-D426-4478-9421-107562FA983F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052D9699-D426-4478-9421-107562FA983F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +122,11 @@ Global
 		{D63702A8-CC4C-457F-AB6E-FB10A3122952} = {84359952-1712-4442-94E0-A97EAB98A5DC}
 		{9AF389B2-E3D7-478C-B7AE-68CE28358C15} = {84359952-1712-4442-94E0-A97EAB98A5DC}
 		{4339528A-95F7-4A98-A348-D492DE99582A} = {84359952-1712-4442-94E0-A97EAB98A5DC}
+		{03E2DF59-9592-49DA-9214-A66B2F8652EA} = {50C0766E-0019-4754-B2C5-E780C4FA94A9}
+		{8196D133-19B1-43F1-9260-ECCC02F58C7E} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
+		{052D9699-D426-4478-9421-107562FA983F} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
+		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
+		{C0B6D0AD-EA1D-4497-BE67-F7D510867013} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03682DF0-2953-4740-B624-E0CF0E74B032}
