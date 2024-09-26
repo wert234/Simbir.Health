@@ -31,12 +31,22 @@ namespace AccountAPI.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetAccounts([FromQuery]int from, [FromQuery] int count)
+        public async Task<IActionResult> GetAccounts([FromQuery] int from, [FromQuery] int count)
             => await _mediator.Send(new GetAccountsQuery(from, count));
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateAccount(CreateAccountCommand command)
             => await _mediator.Send(command);
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdateAccount(Guid id, [FromBody] UpdateAccountCommand command)
+            => await _mediator.Send(new UpdateAccountCommand(id,
+                command.Roles,
+                command.LastName,
+                command.FirstName,
+                command.Username,
+                command.Password));
     }
 }

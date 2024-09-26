@@ -24,6 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
+    option.EnableAnnotations();
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "AccountAPI", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -81,7 +82,10 @@ builder.Services.AddMediatR(options =>
         typeof(UpdateCommand).Assembly,
 
         typeof(CreateAccountHandler).Assembly,
-        typeof(CreateAccountCommand).Assembly
+        typeof(CreateAccountCommand).Assembly,
+
+        typeof(UpdateAccountHandler).Assembly,
+        typeof(UpdateAccountCommand).Assembly
         );
 });
 
