@@ -20,7 +20,7 @@ namespace AccountAPI.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("{from}/{count}")]
         public async Task<IActionResult> Get(string? nameFilter, int from, int count)
             => await _mediator.Send(new DoctorsQuery(nameFilter, from, count));
     }
