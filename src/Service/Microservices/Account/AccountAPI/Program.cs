@@ -108,6 +108,7 @@ builder.Services.AddScoped<IValidator<UpdateCommand>, UpdateCommandValidator>();
 builder.Services.AddScoped<IValidator<CreateAccountCommand>, CreateAccountCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateAccountCommand>, UpdateAccountCommandValidator>();
 builder.Services.AddScoped<IValidator<DeleteAccountCommand>, DeleteAccountValidator>();
+builder.Services.AddScoped<IValidator<DoctorQuery>, DoctorQueryValidator>();
 builder.Services.AddScoped<IValidator<MeQuery>, MeQueryValidator>();
 builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 
