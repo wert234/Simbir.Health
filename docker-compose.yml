@@ -78,5 +78,54 @@ services:
         
   #--------------------------------------------------------
 
+  hospital:
+
+    container_name: Hospital
+
+    image: ${DOCKER_REGISTRY-}hospital
+
+    build:
+      context: .
+      dockerfile: src/Service/Microservices/Hospital/HospitalAPI/Dockerfile
+
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_HTTP_PORTS=5002
+
+    ports:
+        - "5002:5002"
+  
+    networks:
+        - connection
+    
+    depends_on:
+        - hospitalDatabase
+        
+  #--------------------------------------------------------
+
+  hospitalDatabase:
+
+    container_name: HospitalDatabase
+
+    image: postgres:latest
+
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: Frostwert234Z
+        POSTGRES_DB: HospitalDatabase
+        PGPORT: 5022
+  
+    ports:
+        - "5022:5022"
+
+    networks:
+        - connection
+    
+    volumes:
+        - hospital_data:/var/lib/postgresql/data
+        
+  #--------------------------------------------------------
+
 volumes:
     account_data:
+    hospital_data:
