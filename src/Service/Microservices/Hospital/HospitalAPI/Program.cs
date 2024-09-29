@@ -1,5 +1,10 @@
+using Hospital.Application.Handlers;
+using Hospital.Application.Queries;
 using Hospital.Infastructure.Data.DbContexts;
+using Hospital.Infastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Sherad.Application.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +16,16 @@ builder.Services.AddDbContext<HospitalDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
 
+builder.Services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssemblies(
+
+        typeof(GetHospitalsHandler).Assembly,
+        typeof(GetHospitalsQuery).Assembly
+        );
+});
+
+builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, Guid>, HospitalRepository>();
 
 var app = builder.Build();
 
