@@ -22,6 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
+    option.EnableAnnotations();
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "HospetalsAPI", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -66,7 +67,10 @@ builder.Services.AddMediatR(options =>
         typeof(GetRoomsQuery).Assembly,
 
         typeof(AddHospitalHandler).Assembly,
-        typeof(AddHospitalCommand).Assembly
+        typeof(AddHospitalCommand).Assembly,
+
+        typeof(UpdateHospitalHandler).Assembly,
+        typeof(UpdateHospitalCommand).Assembly
         );
 });
 

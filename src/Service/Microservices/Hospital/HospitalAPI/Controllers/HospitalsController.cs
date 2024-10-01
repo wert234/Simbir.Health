@@ -37,5 +37,15 @@ namespace HospitalAPI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddHospital(AddHospitalCommand command)
             => await _mediator.Send(command);
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdateHospital(Guid id, UpdateHospitalCommand command)
+            => await _mediator.Send(new UpdateHospitalCommand(
+                id,
+                command.Name,
+                command.Address,
+                command.ContactPhone,
+                command.Rooms));
     }
 }
