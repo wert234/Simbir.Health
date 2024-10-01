@@ -10,6 +10,10 @@ using Sherad.Application.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using MassTransit;
+using FluentValidation;
+using Hospital.Application.Validators;
+using MediatR;
+using Sherad.Application.Behaviors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,7 +75,9 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, Guid>, HospitalRepository>();
+builder.Services.AddScoped<IValidator<GetHospitalQuery>, GetHospitalQueryValidator>();
 
 var app = builder.Build();
 

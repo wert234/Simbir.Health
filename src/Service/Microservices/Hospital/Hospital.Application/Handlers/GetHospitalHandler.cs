@@ -14,9 +14,9 @@ namespace Hospital.Application.Handlers
     {
         private readonly IRepository<Domain.Entitys.Hospital, Guid> _hospitalRepository;
 
-        public GetHospitalHandler(IRepository<Domain.Entitys.Hospital, Guid> hHospitalRepository)
+        public GetHospitalHandler(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
         {
-            _hospitalRepository = hHospitalRepository;
+            _hospitalRepository = hospitalRepository;
         }
 
         public async Task<IActionResult> Handle(GetHospitalQuery request, CancellationToken cancellationToken)
