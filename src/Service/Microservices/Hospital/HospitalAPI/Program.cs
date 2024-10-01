@@ -90,6 +90,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, Guid>, HospitalRepository>();
 builder.Services.AddScoped<IValidator<GetHospitalQuery>, GetHospitalQueryValidator>();
 builder.Services.AddScoped<IValidator<AddHospitalCommand>, AddHospitalCommandValidator>();
+builder.Services.AddScoped<IValidator<UpdateHospitalCommand>, UpdateHospitalCommandValidator>();
 builder.Services.AddScoped<IValidator<GetRoomsQuery>, GetRoomsQueryValidator>();
 
 var app = builder.Build();
