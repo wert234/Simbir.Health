@@ -94,6 +94,7 @@ builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, Guid>, 
 builder.Services.AddScoped<IValidator<GetHospitalQuery>, GetHospitalQueryValidator>();
 builder.Services.AddScoped<IValidator<AddHospitalCommand>, AddHospitalCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateHospitalCommand>, UpdateHospitalCommandValidator>();
+builder.Services.AddScoped<IValidator<DeleteHospitalCommand>, DeleteHospitalCommandValidator>();
 builder.Services.AddScoped<IValidator<GetRoomsQuery>, GetRoomsQueryValidator>();
 
 var app = builder.Build();
