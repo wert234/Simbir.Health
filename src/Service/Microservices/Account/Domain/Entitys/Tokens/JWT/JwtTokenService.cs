@@ -43,6 +43,10 @@ namespace Account.Domain.Entitys.Tokens.JWT
         }
         public (bool isSuccess, object result) GetPrincipalFromToken(string token)
         {
+            var principal = new JwtSecurityTokenHandler();
+            SecurityToken validatedToken;
+            ClaimsPrincipal claimsPrincipal;
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateAudience = false,
@@ -53,8 +57,15 @@ namespace Account.Domain.Entitys.Tokens.JWT
                 ValidateLifetime = false,
             };
 
-            var principal = new JwtSecurityTokenHandler()
-                .ValidateToken(token, tokenValidationParameters, out SecurityToken validatedToken);
+            try
+            {
+                claimsPrincipal = principal.ValidateToken(token, tokenValidationParameters, out validatedToken);
+            }
+            catch (Exception ex)
+            {
+
+                return (isSuccess: false, result: ex.Message);
+            }
 
             if(validatedToken == null ||
                 !(validatedToken as JwtSecurityToken).Header.Alg
@@ -65,7 +76,7 @@ namespace Account.Domain.Entitys.Tokens.JWT
             }
 
 
-            return (isSuccess: true, result: principal.Claims
+            return (isSuccess: true, result: claimsPrincipal.Claims
                 .Where(claim => claim.Type == ClaimTypes.Role)
                 .Select(role => role.Value)
                 .ToArray());
