@@ -27,5 +27,9 @@ namespace HospitalAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetHospitals(Guid id)
             => await _mediator.Send(new GetHospitalQuery(id));
+
+        [HttpGet("{id}/Rooms")]
+        public async Task<IActionResult> GetRooms(Guid id)
+            => await _mediator.Send(new GetRoomsQuery(id));
     }
 }

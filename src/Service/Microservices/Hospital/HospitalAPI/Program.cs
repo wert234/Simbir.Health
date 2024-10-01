@@ -59,7 +59,10 @@ builder.Services.AddMediatR(options =>
     options.RegisterServicesFromAssemblies(
 
         typeof(GetHospitalsHandler).Assembly,
-        typeof(GetHospitalsQuery).Assembly
+        typeof(GetHospitalsQuery).Assembly,
+
+        typeof(GetRoomsHandler).Assembly,
+        typeof(GetRoomsQuery).Assembly
         );
 });
 
