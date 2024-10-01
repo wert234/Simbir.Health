@@ -23,5 +23,9 @@ namespace HospitalAPI.Controllers
         [HttpGet("{from}/{count}")]
         public async Task<IActionResult> GetHospitals(int from, int count)
             => await _mediator.Send(new GetHospitalsQuery(from, count));
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetHospitals(Guid id)
+            => await _mediator.Send(new GetHospitalQuery(id));
     }
 }
