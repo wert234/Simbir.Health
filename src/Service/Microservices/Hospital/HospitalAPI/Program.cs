@@ -14,6 +14,7 @@ using FluentValidation;
 using Hospital.Application.Validators;
 using MediatR;
 using Sherad.Application.Behaviors;
+using Hospital.Application.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,7 +63,10 @@ builder.Services.AddMediatR(options =>
         typeof(GetHospitalsQuery).Assembly,
 
         typeof(GetRoomsHandler).Assembly,
-        typeof(GetRoomsQuery).Assembly
+        typeof(GetRoomsQuery).Assembly,
+
+        typeof(AddHospitalHandler).Assembly,
+        typeof(AddHospitalCommand).Assembly
         );
 });
 

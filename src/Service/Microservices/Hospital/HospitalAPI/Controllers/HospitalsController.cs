@@ -1,4 +1,5 @@
-﻿using Hospital.Application.Queries;
+﻿using Hospital.Application.Commands;
+using Hospital.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -31,5 +32,10 @@ namespace HospitalAPI.Controllers
         [HttpGet("{id}/Rooms")]
         public async Task<IActionResult> GetRooms(Guid id)
             => await _mediator.Send(new GetRoomsQuery(id));
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddHospital(AddHospitalCommand command)
+            => await _mediator.Send(command);
     }
 }
