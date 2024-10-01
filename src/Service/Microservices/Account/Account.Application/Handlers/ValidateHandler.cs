@@ -30,11 +30,11 @@ namespace Account.Application.Handlers
 
             if(claimsPrincipal.isSuccess)
             {
-                return new OkObjectResult(true);
+                return new OkObjectResult(claimsPrincipal);
             }
             else
             {
-                return new OkObjectResult(claimsPrincipal.result);
+                return new BadRequestObjectResult("Некоректный токен");
             }
         }
     }
