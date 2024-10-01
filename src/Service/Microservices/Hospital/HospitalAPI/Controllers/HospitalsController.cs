@@ -47,5 +47,10 @@ namespace HospitalAPI.Controllers
                 command.Address,
                 command.ContactPhone,
                 command.Rooms));
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteHospital(Guid id)
+            => await _mediator.Send(new DeleteHospitalCommand(id));
     }
 }

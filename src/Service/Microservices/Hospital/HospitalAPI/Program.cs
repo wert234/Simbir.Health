@@ -70,7 +70,10 @@ builder.Services.AddMediatR(options =>
         typeof(AddHospitalCommand).Assembly,
 
         typeof(UpdateHospitalHandler).Assembly,
-        typeof(UpdateHospitalCommand).Assembly
+        typeof(UpdateHospitalCommand).Assembly,
+
+        typeof(DeleteHospitalHandler).Assembly,
+        typeof(DeleteHospitalCommand).Assembly
         );
 });
 
