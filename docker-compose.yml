@@ -30,6 +30,24 @@ services:
 
   #--------------------------------------------------------
 
+  rabbitmq:
+
+    container_name: RabbitMQ
+
+    image: rabbitmq:4-management
+
+    environment:
+        - RABBITMQ_DEFAULT_PASS=Frostwert234Z
+        - RABBITMQ_DEFAULT_USER=Admin
+
+    ports:
+        - "8080:15672"
+        
+    networks:
+        - connection
+
+  #--------------------------------------------------------
+
   account:
 
     container_name: Account

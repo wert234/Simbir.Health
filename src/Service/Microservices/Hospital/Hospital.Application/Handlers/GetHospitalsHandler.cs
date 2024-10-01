@@ -1,5 +1,6 @@
 ﻿using Hospital.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sherad.Application.Repositories;
 using System;
@@ -18,6 +19,7 @@ namespace Hospital.Application.Handlers
         {
             _hospitalsRepository = hospitalsRepository;
         }
+
 
         public async Task<IActionResult> Handle(GetHospitalsQuery request, CancellationToken cancellationToken)
         {

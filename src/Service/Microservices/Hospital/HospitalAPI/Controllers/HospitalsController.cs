@@ -8,14 +8,17 @@ namespace HospitalAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HospitalsController : ControllerBase
     {
         private readonly IMediator _mediator;
+
 
         public HospitalsController(IMediator mediator)
         {
             _mediator = mediator;
         }
+
 
         [HttpGet("{from}/{count}")]
         public async Task<IActionResult> GetHospitals(int from, int count)

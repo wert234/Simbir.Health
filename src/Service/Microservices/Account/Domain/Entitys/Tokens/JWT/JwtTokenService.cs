@@ -64,7 +64,11 @@ namespace Account.Domain.Entitys.Tokens.JWT
                 return (isSuccess: false, result: "Некоректный токен");
             }
 
-            return (isSuccess: true, result: principal);
+
+            return (isSuccess: true, result: principal.Claims
+                .Where(claim => claim.Type == ClaimTypes.Role)
+                .Select(role => role.Value)
+                .ToArray());
         }
     }
 }

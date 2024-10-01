@@ -7,7 +7,9 @@ using Account.Domain.Entitys.Tokens.Common;
 using Account.Domain.Entitys.Tokens.JWT;
 using Account.Infrastructure.Data.DbContexts;
 using Account.Infrastructure.Repositories;
+using AccountAPI.Consumers;
 using FluentValidation;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -135,6 +137,24 @@ builder.Services.AddAuthorization(options => options.DefaultPolicy =
             (JwtBearerDefaults.AuthenticationScheme)
         .RequireAuthenticatedUser()
         .Build());
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<AuthConsumer>();
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("rabbitmq", h =>
+        {
+            h.Username("Admin");
+            h.Password("Frostwert234Z");
+        });
+
+        cfg.ReceiveEndpoint("auth_queue", e =>
+        {
+            e.ConfigureConsumer<AuthConsumer>(context);
+        });
+    });
+});
 
 var app = builder.Build();
 
