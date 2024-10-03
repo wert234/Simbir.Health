@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Sherad.Application.Common;
 using Timetable.Infastructure.Data.DbContexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,9 @@ builder.Services.AddSwaggerGen(option =>
         }
     });
 });
+
+builder.Services.AddAuthentication("RabbitMQ")
+    .AddScheme<AuthenticationSchemeOptions, RabbitMqJwtAuthenticationHandler>("RabbitMQ", null);
 
 builder.Services.AddDbContext<TimetableDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));

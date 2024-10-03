@@ -1,4 +1,4 @@
-using Hospital.Application.Common;
+using Sherad.Application.Common;
 using Hospital.Application.Handlers;
 using Hospital.Application.Queries;
 using Hospital.Infastructure.Data.DbContexts;

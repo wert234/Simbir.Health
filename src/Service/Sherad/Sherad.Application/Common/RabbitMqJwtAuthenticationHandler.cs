@@ -17,7 +17,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Sherad.Domain.Entitys;
 
-namespace Hospital.Application.Common
+namespace Sherad.Application.Common
 {
 
     public class RabbitMqJwtAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
