@@ -178,7 +178,7 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: Frostwert234Z
-        POSTGRES_DB: HospitalDatabase
+        POSTGRES_DB: TimetableDatabase
         PGPORT: 5033
   
     ports:
