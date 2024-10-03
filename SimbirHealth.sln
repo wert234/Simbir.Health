@@ -37,13 +37,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sherad.Infrastructure", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hospital", "Hospital", "{03E2DF59-9592-49DA-9214-A66B2F8652EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalAPI", "src\Service\Microservices\Hospital\HospitalAPI\HospitalAPI.csproj", "{8196D133-19B1-43F1-9260-ECCC02F58C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalAPI", "src\Service\Microservices\Hospital\HospitalAPI\HospitalAPI.csproj", "{8196D133-19B1-43F1-9260-ECCC02F58C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Application", "src\Service\Microservices\Hospital\Hospital.Application\Hospital.Application.csproj", "{052D9699-D426-4478-9421-107562FA983F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hospital.Application", "src\Service\Microservices\Hospital\Hospital.Application\Hospital.Application.csproj", "{052D9699-D426-4478-9421-107562FA983F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Domain", "src\Service\Microservices\Hospital\Hospital.Domain\Hospital.Domain.csproj", "{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hospital.Domain", "src\Service\Microservices\Hospital\Hospital.Domain\Hospital.Domain.csproj", "{E7B2357D-1122-4F3F-B14E-FA6B94DD5345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Infastructure", "src\Service\Microservices\Hospital\Hospital.Infastructure\Hospital.Infastructure.csproj", "{C0B6D0AD-EA1D-4497-BE67-F7D510867013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hospital.Infastructure", "src\Service\Microservices\Hospital\Hospital.Infastructure\Hospital.Infastructure.csproj", "{C0B6D0AD-EA1D-4497-BE67-F7D510867013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Timetable", "Timetable", "{BF5ED5F7-40E2-4E01-8F65-EBF50881061C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Domain", "src\Service\Microservices\Timetable\Timetable.Domain\Timetable.Domain.csproj", "{312AFE5C-1723-4A9D-8277-40522A07D1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Application", "src\Service\Microservices\Timetable\Timetable.Application\Timetable.Application.csproj", "{A9DD665C-5463-4ECB-84C0-D44B6319A939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timetable.Infastructure", "src\Service\Microservices\Timetable\Timetable.Infastructure\Timetable.Infastructure.csproj", "{6E288740-C521-41FD-85CC-A90DDF77D443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableAPI", "src\Service\Microservices\Timetable\TimetableAPI\TimetableAPI.csproj", "{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +113,22 @@ Global
 		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0B6D0AD-EA1D-4497-BE67-F7D510867013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{312AFE5C-1723-4A9D-8277-40522A07D1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{312AFE5C-1723-4A9D-8277-40522A07D1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{312AFE5C-1723-4A9D-8277-40522A07D1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{312AFE5C-1723-4A9D-8277-40522A07D1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9DD665C-5463-4ECB-84C0-D44B6319A939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9DD665C-5463-4ECB-84C0-D44B6319A939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9DD665C-5463-4ECB-84C0-D44B6319A939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9DD665C-5463-4ECB-84C0-D44B6319A939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E288740-C521-41FD-85CC-A90DDF77D443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E288740-C521-41FD-85CC-A90DDF77D443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E288740-C521-41FD-85CC-A90DDF77D443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E288740-C521-41FD-85CC-A90DDF77D443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,6 +153,11 @@ Global
 		{052D9699-D426-4478-9421-107562FA983F} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
 		{E7B2357D-1122-4F3F-B14E-FA6B94DD5345} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
 		{C0B6D0AD-EA1D-4497-BE67-F7D510867013} = {03E2DF59-9592-49DA-9214-A66B2F8652EA}
+		{BF5ED5F7-40E2-4E01-8F65-EBF50881061C} = {50C0766E-0019-4754-B2C5-E780C4FA94A9}
+		{312AFE5C-1723-4A9D-8277-40522A07D1CD} = {BF5ED5F7-40E2-4E01-8F65-EBF50881061C}
+		{A9DD665C-5463-4ECB-84C0-D44B6319A939} = {BF5ED5F7-40E2-4E01-8F65-EBF50881061C}
+		{6E288740-C521-41FD-85CC-A90DDF77D443} = {BF5ED5F7-40E2-4E01-8F65-EBF50881061C}
+		{DC1B1BDD-2E43-4BD0-A781-31EF63ED252C} = {BF5ED5F7-40E2-4E01-8F65-EBF50881061C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03682DF0-2953-4740-B624-E0CF0E74B032}
