@@ -2,7 +2,10 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sherad.Application.Common;
+using Sherad.Application.Repositories;
+using Timetable.Domain.Entitys;
 using Timetable.Infastructure.Data.DbContexts;
+using Timetable.Infastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +46,8 @@ builder.Services.AddAuthentication("RabbitMQ")
 builder.Services.AddDbContext<TimetableDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
+
+builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, Guid>, TimetableRepository>();
 
 var app = builder.Build();
 
