@@ -13,9 +13,9 @@ namespace Account.Application.Handlers
 {
     public class CreateAccountHandler : IRequestHandler<CreateAccountCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
-        public CreateAccountHandler(IRepository<User, Guid> accountRepository)
+        public CreateAccountHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

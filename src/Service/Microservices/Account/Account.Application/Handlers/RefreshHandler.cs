@@ -15,10 +15,10 @@ namespace Account.Application.Handlers
 {
     public class RefreshHandler : IRequestHandler<RefreshCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
         private readonly ITokenService _tokenService;
 
-        public RefreshHandler(IRepository<User, Guid> accountRepository, ITokenService tokenService)
+        public RefreshHandler(IRepository<User, int> accountRepository, ITokenService tokenService)
         {
             _accountRepository = accountRepository;
             _tokenService = tokenService;
@@ -31,7 +31,7 @@ namespace Account.Application.Handlers
 
 
             var newAccessToken = _tokenService.GenerateAccessToken(user, user.Roles
-                .Select(role => new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), role)))
+                .Select(role => new Claim(ClaimTypes.Role, role))
                 .ToList());
             var newRefreshToken = _tokenService.GenerateRefreshToken();
 

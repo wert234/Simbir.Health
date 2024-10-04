@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Account.Application.Commands
 {
-    public class DeleteAccountCommand(Guid id) : IRequest<IActionResult> 
+    public class DeleteAccountCommand(int id) : IRequest<IActionResult> 
     {
-        public Guid Id { get; set; } = id;
+        public int Id { get; set; } = id;
     }
 }

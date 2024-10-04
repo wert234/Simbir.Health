@@ -13,10 +13,10 @@ namespace Hospital.Application.Handlers
 {
     public class UpdateHospitalHandler : IRequestHandler<UpdateHospitalCommand, IActionResult>
     {
-        private readonly IRepository<Domain.Entitys.Hospital, Guid> _hospitalsRepository;
+        private readonly IRepository<Domain.Entitys.Hospital, int> _hospitalsRepository;
 
 
-        public UpdateHospitalHandler(IRepository<Domain.Entitys.Hospital, Guid> hospitalsRepository)
+        public UpdateHospitalHandler(IRepository<Domain.Entitys.Hospital, int> hospitalsRepository)
         {
             _hospitalsRepository = hospitalsRepository;
         }

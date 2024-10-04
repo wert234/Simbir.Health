@@ -10,6 +10,6 @@ namespace Account.Application.Commands
 {
     public class SignOutCommand : IRequest<IActionResult>
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Account.Application.Handlers
 {
     public class UpdateAccountHandler : IRequestHandler<UpdateAccountCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
 
-        public UpdateAccountHandler(IRepository<User, Guid> accountRepository)
+        public UpdateAccountHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }
@@ -30,7 +30,7 @@ namespace Account.Application.Handlers
             user.LastName = request.LastName == "" || request.LastName == null ? user.LastName : request.LastName;
             user.Username = request.Username == "" || request.Username == null ? user.Username : request.Username;
             user.PasswordHash = request.Password == "" || request.Password == null ? user.PasswordHash : BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password);
-            user.Roles = request.Roles == default(List<Role>) || request.Roles == null ? user.Roles : request.Roles;
+            user.Roles = request.Roles == default(List<string>) || request.Roles == null ? user.Roles : request.Roles;
 
             await _accountRepository.UpdateAsync(user);
 

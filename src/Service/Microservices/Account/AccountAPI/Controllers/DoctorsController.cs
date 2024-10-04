@@ -25,7 +25,7 @@ namespace AccountAPI.Controllers
             => await _mediator.Send(new DoctorsQuery(nameFilter, from, count));
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(int id)
             => await _mediator.Send(new DoctorQuery(id));
     }
 }

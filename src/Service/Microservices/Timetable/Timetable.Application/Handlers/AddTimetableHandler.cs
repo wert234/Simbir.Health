@@ -12,10 +12,10 @@ namespace Timetable.Application.Handlers
 {
     public class AddTimetableHandler : IRequestHandler<AddTimetableCommand, IActionResult>
     {
-        private readonly IRepository<Domain.Entitys.Timetable, Guid> _timetableRepository;
+        private readonly IRepository<Domain.Entitys.Timetable, int> _timetableRepository;
 
 
-        public AddTimetableHandler(IRepository<Domain.Entitys.Timetable, Guid> timetableRepository)
+        public AddTimetableHandler(IRepository<Domain.Entitys.Timetable, int> timetableRepository)
         {
             _timetableRepository = timetableRepository;
         }

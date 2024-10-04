@@ -14,10 +14,10 @@ namespace Account.Application.Handlers
 {
     public class DoctorHandler : IRequestHandler<DoctorQuery, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
 
-        public DoctorHandler(IRepository<User, Guid> accountRepository)
+        public DoctorHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

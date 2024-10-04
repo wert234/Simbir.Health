@@ -12,7 +12,7 @@ namespace Account.Application.Validators
 {
     public class MeQueryValidator : AbstractValidator<MeQuery>
     {
-        public MeQueryValidator(IRepository<User,Guid> repository)
+        public MeQueryValidator(IRepository<User, int> repository)
         {
             RuleFor(query => query.Id)
                 .NotEmpty()

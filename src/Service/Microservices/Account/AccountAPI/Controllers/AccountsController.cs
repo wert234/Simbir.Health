@@ -22,7 +22,7 @@ namespace AccountAPI.Controllers
 
 
         [HttpGet("Me/{id}")]
-        public async Task<IActionResult> Me(Guid id)
+        public async Task<IActionResult> Me(int id)
             => await _mediator.Send(new MeQuery(id));
 
         [HttpPut("Update")]
@@ -41,7 +41,7 @@ namespace AccountAPI.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateAccount(Guid id, [FromBody] UpdateAccountCommand command)
+        public async Task<IActionResult> UpdateAccount(int id, [FromBody] UpdateAccountCommand command)
             => await _mediator.Send(new UpdateAccountCommand(id,
                 command.Roles,
                 command.LastName,
@@ -51,7 +51,7 @@ namespace AccountAPI.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteAccount(Guid id)
+        public async Task<IActionResult> DeleteAccount(int id)
             => await _mediator.Send(new DeleteAccountCommand(id));
     }
 }

@@ -13,7 +13,7 @@ namespace Account.Application.Validators
 {
     public class RefreshCommandValidator : AbstractValidator<RefreshCommand>
     {
-        public RefreshCommandValidator(IRepository<User, Guid> accountRepository)
+        public RefreshCommandValidator(IRepository<User, int> accountRepository)
         {
             RuleFor(token => token.RefreshToken)
                 .NotEmpty()

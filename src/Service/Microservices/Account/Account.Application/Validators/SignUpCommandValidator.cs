@@ -13,7 +13,7 @@ namespace Account.Application.Validators
     public class SignUpCommandValidator : AbstractValidator<SignUpCommand>
     {
 
-        public SignUpCommandValidator(IRepository<User, Guid> repository)
+        public SignUpCommandValidator(IRepository<User, int> repository)
         {
 
             RuleFor(user => user.Password)

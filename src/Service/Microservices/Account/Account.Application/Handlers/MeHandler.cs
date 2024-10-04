@@ -14,10 +14,10 @@ namespace Account.Application.Handlers
 {
     public class MeHandler : IRequestHandler<MeQuery, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
 
-        public MeHandler(IRepository<User, Guid> accountRepository)
+        public MeHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

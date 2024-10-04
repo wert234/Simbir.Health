@@ -13,10 +13,10 @@ namespace Account.Application.Handlers
 {
     public class SignOutHandler : IRequestHandler<SignOutCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
 
-        public SignOutHandler(IRepository<User, Guid> accountRepository)
+        public SignOutHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

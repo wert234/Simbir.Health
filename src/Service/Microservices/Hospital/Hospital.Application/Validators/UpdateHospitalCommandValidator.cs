@@ -12,7 +12,7 @@ namespace Hospital.Application.Validators
 {
     public class UpdateHospitalCommandValidator : AbstractValidator<UpdateHospitalCommand>
     {
-        public UpdateHospitalCommandValidator(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
+        public UpdateHospitalCommandValidator(IRepository<Domain.Entitys.Hospital, int> hospitalRepository)
         {
             RuleFor(hospital => hospital.Id)
                  .NotEmpty()

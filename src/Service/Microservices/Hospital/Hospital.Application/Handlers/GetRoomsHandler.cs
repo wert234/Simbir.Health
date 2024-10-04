@@ -12,10 +12,10 @@ namespace Hospital.Application.Handlers
 {
     public class GetRoomsHandler : IRequestHandler<GetRoomsQuery, IActionResult>
     {
-        private readonly IRepository<Domain.Entitys.Hospital, Guid> _hospitalRepository;
+        private readonly IRepository<Domain.Entitys.Hospital, int> _hospitalRepository;
 
 
-        public GetRoomsHandler(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
+        public GetRoomsHandler(IRepository<Domain.Entitys.Hospital, int> hospitalRepository)
         {
             _hospitalRepository = hospitalRepository;
         }

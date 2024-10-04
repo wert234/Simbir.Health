@@ -12,10 +12,10 @@ namespace Hospital.Application.Handlers
 {
     public class DeleteHospitalHandler : IRequestHandler<DeleteHospitalCommand, IActionResult>
     {
-        private readonly IRepository<Domain.Entitys.Hospital, Guid> _hospitalRepository;
+        private readonly IRepository<Domain.Entitys.Hospital, int> _hospitalRepository;
 
 
-        public DeleteHospitalHandler(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
+        public DeleteHospitalHandler(IRepository<Domain.Entitys.Hospital, int> hospitalRepository)
         {
             _hospitalRepository = hospitalRepository;
         }

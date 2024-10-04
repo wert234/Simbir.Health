@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Hospital.Application.Commands
 {
-    public class DeleteHospitalCommand(Guid id) : IRequest<IActionResult>
+    public class DeleteHospitalCommand(int id) : IRequest<IActionResult>
     {
-        public Guid Id { get; set; } = id;
+        public int Id { get; set; } = id;
     }
 }

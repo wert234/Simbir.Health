@@ -73,7 +73,7 @@ builder.Services.AddDbContext<TimetableDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
 
-builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, Guid>, TimetableRepository>();
+builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, int>, TimetableRepository>();
 
 var app = builder.Build();
 

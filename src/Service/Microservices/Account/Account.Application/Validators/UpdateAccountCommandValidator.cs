@@ -12,7 +12,7 @@ namespace Account.Application.Validators
 {
     public class UpdateAccountCommandValidator : AbstractValidator<UpdateAccountCommand>
     {
-        public UpdateAccountCommandValidator(IRepository<User, Guid> repository)
+        public UpdateAccountCommandValidator(IRepository<User, int> repository)
         {
             RuleFor(user => user.Password)
                 .NotEmpty()

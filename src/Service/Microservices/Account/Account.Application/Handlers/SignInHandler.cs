@@ -16,11 +16,11 @@ namespace Account.Application.Handlers
 {
     public class SignInHandler : IRequestHandler<SignInCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
         private readonly ITokenService _tokenGenerator;
 
 
-        public SignInHandler(IRepository<User, Guid> accountRepository, ITokenService tokenGenerator)
+        public SignInHandler(IRepository<User, int> accountRepository, ITokenService tokenGenerator)
         {
             _accountRepository = accountRepository;
             _tokenGenerator = tokenGenerator;
@@ -36,7 +36,7 @@ namespace Account.Application.Handlers
 
 
             var accessToken = _tokenGenerator.GenerateAccessToken(user, user.Roles
-                .Select(role => new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), role)))
+                .Select(role => new Claim(ClaimTypes.Role, role))
                 .ToList());
 
             var refreshToken = _tokenGenerator.GenerateRefreshToken();

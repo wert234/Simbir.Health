@@ -14,9 +14,9 @@ namespace Account.Application.Handlers
 {
     public class GetDoctorsHandler : IRequestHandler<DoctorsQuery, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
-        public GetDoctorsHandler(IRepository<User, Guid> accountRepository)
+        public GetDoctorsHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }
@@ -26,7 +26,7 @@ namespace Account.Application.Handlers
         {
             return new OkObjectResult((await _accountRepository
                 .GetAllAsync())
-                .Where(user => user.Roles.Contains(Role.Doctor) && 
+                .Where(user => user.Roles.Contains(Enum.GetName(typeof(Role), Role.Doctor)) && 
                 (request.NameFilter == "" || request.NameFilter == null ||
                 user.LastName.Contains(request.NameFilter) ||
                 user.FirstName.Contains(request.NameFilter)))

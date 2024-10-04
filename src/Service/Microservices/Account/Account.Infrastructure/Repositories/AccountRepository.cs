@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Account.Infrastructure.Repositories
 {
-    public class AccountRepository : IRepository<User, Guid>
+    public class AccountRepository : IRepository<User, int>
     {
         private readonly AccountDbContext _context;
 
@@ -27,7 +27,7 @@ namespace Account.Infrastructure.Repositories
            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(int id)
         {
             _context.Users.Remove(await GetAsync(id));
             await _context.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace Account.Infrastructure.Repositories
             return await _context.Users.ToArrayAsync();
         }
 
-        public async Task<User> GetAsync(Guid id)
+        public async Task<User> GetAsync(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
         }

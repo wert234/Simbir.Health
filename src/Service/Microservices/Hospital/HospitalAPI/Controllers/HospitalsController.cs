@@ -26,11 +26,11 @@ namespace HospitalAPI.Controllers
             => await _mediator.Send(new GetHospitalsQuery(from, count));
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetHospitals(Guid id)
+        public async Task<IActionResult> GetHospitals(int id)
             => await _mediator.Send(new GetHospitalQuery(id));
 
         [HttpGet("{id}/Rooms")]
-        public async Task<IActionResult> GetRooms(Guid id)
+        public async Task<IActionResult> GetRooms(int id)
             => await _mediator.Send(new GetRoomsQuery(id));
 
         [HttpPost]
@@ -40,7 +40,7 @@ namespace HospitalAPI.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateHospital(Guid id, UpdateHospitalCommand command)
+        public async Task<IActionResult> UpdateHospital(int id, UpdateHospitalCommand command)
             => await _mediator.Send(new UpdateHospitalCommand(
                 id,
                 command.Name,
@@ -50,7 +50,7 @@ namespace HospitalAPI.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteHospital(Guid id)
+        public async Task<IActionResult> DeleteHospital(int id)
             => await _mediator.Send(new DeleteHospitalCommand(id));
     }
 }

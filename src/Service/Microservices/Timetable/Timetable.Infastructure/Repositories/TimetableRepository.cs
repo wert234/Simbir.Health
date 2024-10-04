@@ -9,7 +9,7 @@ using Timetable.Infastructure.Data.DbContexts;
 
 namespace Timetable.Infastructure.Repositories
 {
-    public class TimetableRepository : IRepository<Domain.Entitys.Timetable, Guid>
+    public class TimetableRepository : IRepository<Domain.Entitys.Timetable, int>
     {
 
         private readonly TimetableDbContext _timetableDbContext;
@@ -27,7 +27,7 @@ namespace Timetable.Infastructure.Repositories
             await _timetableDbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(int id)
         {
             _timetableDbContext.Remove(await GetAsync(id));
             await _timetableDbContext.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace Timetable.Infastructure.Repositories
             return await _timetableDbContext.Timetables.ToArrayAsync();
         }
 
-        public async Task<Domain.Entitys.Timetable> GetAsync(Guid id)
+        public async Task<Domain.Entitys.Timetable> GetAsync(int id)
         {
             return await _timetableDbContext.Timetables.FirstOrDefaultAsync(timetable => timetable.Id == id);
         }

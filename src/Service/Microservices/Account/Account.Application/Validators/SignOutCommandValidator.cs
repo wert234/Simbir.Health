@@ -14,7 +14,7 @@ namespace Account.Application.Validators
 {
     public class SignOutCommandValidator : AbstractValidator<SignOutCommand>
     {
-        public SignOutCommandValidator(IRepository<User, Guid> repository)
+        public SignOutCommandValidator(IRepository<User, int> repository)
         {
             RuleFor(user => user.UserId)
                 .MustAsync(async (userId, cancellation) =>

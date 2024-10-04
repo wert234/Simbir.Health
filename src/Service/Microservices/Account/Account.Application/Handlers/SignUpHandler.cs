@@ -13,9 +13,9 @@ namespace Account.Application.Handlers
 {
     public class SignUpHandler : IRequestHandler<SignUpCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
-        public SignUpHandler(IRepository<User, Guid> accountRepository)
+        public SignUpHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }
@@ -30,7 +30,7 @@ namespace Account.Application.Handlers
                     LastName = request.LastName,
                     Username = request.Username,
                     PasswordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password),
-                    Roles = new List<Role> { Role.User },
+                    Roles = new List<string> { Enum.GetName(typeof(Role), Role.User) },
                 });
 
                 return new NoContentResult();

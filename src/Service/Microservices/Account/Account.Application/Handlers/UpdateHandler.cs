@@ -13,9 +13,9 @@ namespace Account.Application.Handlers
 {
     public class UpdateHandler : IRequestHandler<UpdateCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
-        public UpdateHandler(IRepository<User, Guid> accountRepository)
+        public UpdateHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

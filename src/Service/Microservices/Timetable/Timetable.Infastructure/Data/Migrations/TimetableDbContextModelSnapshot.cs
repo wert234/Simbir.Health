@@ -24,18 +24,20 @@ namespace Timetable.Infastructure.Migrations
 
             modelBuilder.Entity("Timetable.Domain.Entitys.Timetable", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uuid");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("From")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("HospitalId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("HospitalId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Room")
                         .IsRequired()

@@ -11,7 +11,7 @@ namespace Hospital.Application.Validators
 {
     public class GetRoomsQueryValidator : AbstractValidator<GetRoomsQuery>
     {
-        public GetRoomsQueryValidator(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
+        public GetRoomsQueryValidator(IRepository<Domain.Entitys.Hospital, int> hospitalRepository)
         {
             RuleFor(hospital => hospital.Id)
                 .NotEmpty()

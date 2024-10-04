@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.Infastructure.Repositories
 {
-    public class HospitalRepository : IRepository<Hospital.Domain.Entitys.Hospital, Guid>
+    public class HospitalRepository : IRepository<Hospital.Domain.Entitys.Hospital, int>
     {
 
         private readonly HospitalDbContext _hospitalDbContext;
@@ -27,7 +27,7 @@ namespace Hospital.Infastructure.Repositories
             await _hospitalDbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(int id)
         {
              _hospitalDbContext.Remove(await GetAsync(id));
             await _hospitalDbContext.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace Hospital.Infastructure.Repositories
             return await _hospitalDbContext.Hospitals.ToArrayAsync();
         }
 
-        public async Task<Domain.Entitys.Hospital> GetAsync(Guid id)
+        public async Task<Domain.Entitys.Hospital> GetAsync(int id)
         {
             return await _hospitalDbContext.Hospitals.FirstOrDefaultAsync(hospital => hospital.Id == id);
         }

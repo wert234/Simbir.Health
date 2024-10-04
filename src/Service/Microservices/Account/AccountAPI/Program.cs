@@ -101,7 +101,7 @@ builder.Services.AddMediatR(options =>
 });
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-builder.Services.AddScoped<IRepository<User, Guid>, AccountRepository>();
+builder.Services.AddScoped<IRepository<User, int>, AccountRepository>();
 builder.Services.AddScoped<IValidator<SignUpCommand>, SignUpCommandValidator>();
 builder.Services.AddScoped<IValidator<SignInCommand>, SignInCommandValidator>();
 builder.Services.AddScoped<IValidator<SignOutCommand>, SignOutCommandValidator>();

@@ -12,14 +12,14 @@ namespace Hospital.Application.Commands
     public class UpdateHospitalCommand : IRequest<IActionResult>
     {
         [SwaggerSchema(ReadOnly = true)]
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string ContactPhone { get; set; }
         public List<string> Rooms { get; set; }
 
 
-        public UpdateHospitalCommand(Guid id, string name, string address, string contactPhone, List<string> rooms)
+        public UpdateHospitalCommand(int id, string name, string address, string contactPhone, List<string> rooms)
         {
             Id = id;
             Name = name;

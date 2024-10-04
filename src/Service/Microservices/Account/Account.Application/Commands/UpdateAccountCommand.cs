@@ -13,15 +13,15 @@ namespace Account.Application.Commands
     public class UpdateAccountCommand : IRequest<IActionResult>
     {
         [SwaggerSchema(ReadOnly = true)]
-        public Guid Id { get; private set; }
-        public List<Role> Roles { get; set; }
+        public int Id { get; private set; }
+        public List<string> Roles { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
 
 
-        public UpdateAccountCommand(Guid id, List<Role> roles, string lastName, string firstName, string username, string password)
+        public UpdateAccountCommand(int id, List<string> roles, string lastName, string firstName, string username, string password)
         {
             Id = id;
             Roles = roles;

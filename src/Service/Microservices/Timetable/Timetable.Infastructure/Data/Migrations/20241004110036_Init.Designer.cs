@@ -12,7 +12,7 @@ using Timetable.Infastructure.Data.DbContexts;
 namespace Timetable.Infastructure.Migrations
 {
     [DbContext(typeof(TimetableDbContext))]
-    [Migration("20241003103537_Init")]
+    [Migration("20241004110036_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -27,15 +27,20 @@ namespace Timetable.Infastructure.Migrations
 
             modelBuilder.Entity("Timetable.Domain.Entitys.Timetable", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uuid");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("From")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("HospitalId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Room")
                         .IsRequired()

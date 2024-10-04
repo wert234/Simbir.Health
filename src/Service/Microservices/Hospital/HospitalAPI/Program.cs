@@ -90,7 +90,7 @@ builder.Services.AddMassTransit(x =>
 });
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, Guid>, HospitalRepository>();
+builder.Services.AddScoped<IRepository<Hospital.Domain.Entitys.Hospital, int>, HospitalRepository>();
 builder.Services.AddScoped<IValidator<GetHospitalQuery>, GetHospitalQueryValidator>();
 builder.Services.AddScoped<IValidator<AddHospitalCommand>, AddHospitalCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateHospitalCommand>, UpdateHospitalCommandValidator>();

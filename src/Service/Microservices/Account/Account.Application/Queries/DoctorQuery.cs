@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Account.Application.Queries
 {
-    public class DoctorQuery(Guid id) : IRequest<IActionResult>
+    public class DoctorQuery(int id) : IRequest<IActionResult>
     {
-        public Guid Id { get; set; } = id;
+        public int Id { get; set; } = id;
     }
 }

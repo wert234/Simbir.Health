@@ -12,7 +12,7 @@ namespace Account.Application.Validators
 {
     public class DoctorQueryValidator : AbstractValidator<DoctorQuery>
     {
-        public DoctorQueryValidator(IRepository<User, Guid> repository)
+        public DoctorQueryValidator(IRepository<User, int> repository)
         {
             RuleFor(query => query.Id)
                 .NotEmpty()
@@ -21,7 +21,7 @@ namespace Account.Application.Validators
                 {
                     var user = await repository.GetAsync(id);
 
-                    return user.Roles.Contains(Role.Doctor);
+                    return user.Roles.Contains(Enum.GetName(typeof(Role), Role.Doctor));
                 })
                 .WithMessage("Некоректный Id");
         }

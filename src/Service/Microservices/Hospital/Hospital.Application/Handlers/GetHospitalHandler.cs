@@ -12,16 +12,24 @@ namespace Hospital.Application.Handlers
 {
     public class GetHospitalHandler : IRequestHandler<GetHospitalQuery, IActionResult>
     {
-        private readonly IRepository<Domain.Entitys.Hospital, Guid> _hospitalRepository;
+        private readonly IRepository<Domain.Entitys.Hospital, int> _hospitalRepository;
 
-        public GetHospitalHandler(IRepository<Domain.Entitys.Hospital, Guid> hospitalRepository)
+        public GetHospitalHandler(IRepository<Domain.Entitys.Hospital, int> hospitalRepository)
         {
             _hospitalRepository = hospitalRepository;
         }
 
         public async Task<IActionResult> Handle(GetHospitalQuery request, CancellationToken cancellationToken)
         {
-            return new OkObjectResult(await _hospitalRepository.GetAsync(request.Id));
+            var hospital = await _hospitalRepository.GetAsync(request.Id);
+
+            return new OkObjectResult(new Dictionary<string, object>
+            {
+                {"Id", hospital.Id},
+                {"Name", hospital.Name},
+                {"Address", hospital.Address},
+                {"ContactPhone", hospital.ContactPhone},
+            });
         }
     }
 }

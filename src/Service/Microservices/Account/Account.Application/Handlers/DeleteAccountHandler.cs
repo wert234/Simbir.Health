@@ -14,10 +14,10 @@ namespace Account.Application.Handlers
 {
     public class DeleteAccountHandler : IRequestHandler<DeleteAccountCommand, IActionResult>
     {
-        private readonly IRepository<User, Guid> _accountRepository;
+        private readonly IRepository<User, int> _accountRepository;
 
 
-        public DeleteAccountHandler(IRepository<User, Guid> accountRepository)
+        public DeleteAccountHandler(IRepository<User, int> accountRepository)
         {
             _accountRepository = accountRepository;
         }

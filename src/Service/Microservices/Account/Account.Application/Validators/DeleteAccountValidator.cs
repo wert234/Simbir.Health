@@ -12,7 +12,7 @@ namespace Account.Application.Validators
 {
     public class DeleteAccountValidator : AbstractValidator<DeleteAccountCommand>
     {
-        public DeleteAccountValidator(IRepository<User, Guid> repository)
+        public DeleteAccountValidator(IRepository<User, int> repository)
         {
             RuleFor(user => user.Id)
                 .NotEmpty()

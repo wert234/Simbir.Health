@@ -8,9 +8,9 @@ namespace Timetable.Domain.Entitys
 {
     public class Timetable
     {
-        public Guid Id { get; set; }
-        public Guid HospitalId { get; set; }
-        public Guid DoctorId { get; set; }
+        public int Id { get; set; }
+        public int HospitalId { get; set; }
+        public int DoctorId { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public string Room { get; set; }
