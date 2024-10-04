@@ -1,11 +1,16 @@
+using FluentValidation;
 using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Sherad.Application.Behaviors;
 using Sherad.Application.Common;
 using Sherad.Application.Repositories;
+using System.Text.Json.Serialization;
 using Timetable.Application.Commands;
 using Timetable.Application.Handlers;
+using Timetable.Application.Validators;
 using Timetable.Domain.Entitys;
 using Timetable.Infastructure.Data.DbContexts;
 using Timetable.Infastructure.Repositories;
@@ -13,7 +18,11 @@ using Timetable.Infastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
@@ -73,7 +82,9 @@ builder.Services.AddDbContext<TimetableDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
 });
 
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, int>, TimetableRepository>();
+builder.Services.AddScoped<IValidator<AddTimetableCommand>, AddTimetableCommandValidator>();
 
 var app = builder.Build();
 

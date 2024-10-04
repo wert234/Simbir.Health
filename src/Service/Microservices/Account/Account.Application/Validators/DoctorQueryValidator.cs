@@ -21,7 +21,10 @@ namespace Account.Application.Validators
                 {
                     var user = await repository.GetAsync(id);
 
-                    return user.Roles.Contains(Enum.GetName(typeof(Role), Role.Doctor));
+                    if (user != null)
+                        return user.Roles.Contains(Enum.GetName(typeof(Role), Role.Doctor));
+                    else
+                        return false;
                 })
                 .WithMessage("Некоректный Id");
         }

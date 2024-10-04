@@ -15,6 +15,7 @@ using Hospital.Application.Validators;
 using MediatR;
 using Sherad.Application.Behaviors;
 using Hospital.Application.Commands;
+using HospitalAPI.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,12 +80,19 @@ builder.Services.AddMediatR(options =>
 
 builder.Services.AddMassTransit(x =>
 {
+    x.AddConsumer<HospitalConsumer>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("rabbitmq", h =>
         {
             h.Username("Admin");
             h.Password("Frostwert234Z");
+        });
+
+        cfg.ReceiveEndpoint("hospital_queue", options =>
+        {
+            options.ConfigureConsumer<HospitalConsumer>(context);
         });
     });
 });

@@ -12,8 +12,8 @@ namespace Timetable.Application.Commands
     {
         public int DoctorId { get; set; }
         public int HospitalId { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public DateTimeOffset From { get; set; }
+        public DateTimeOffset To { get; set; }
         public string Room { get; set; }
     }
 }

@@ -141,6 +141,8 @@ builder.Services.AddAuthorization(options => options.DefaultPolicy =
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<AuthConsumer>();
+    x.AddConsumer<AccountsConsumer>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("rabbitmq", h =>
@@ -152,6 +154,11 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("auth_queue", e =>
         {
             e.ConfigureConsumer<AuthConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("accounts_queue", e =>
+        {
+            e.ConfigureConsumer<AccountsConsumer>(context);
         });
     });
 });
