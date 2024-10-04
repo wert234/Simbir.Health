@@ -24,5 +24,9 @@ namespace TimetableAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTimetable(AddTimetableCommand command)
             => await _mediator.Send(command);
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateTimetable(UpdateTimetableCommand command)
+            => await _mediator.Send(command);
     }
 }
