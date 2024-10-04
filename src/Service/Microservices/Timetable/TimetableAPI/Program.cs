@@ -1,8 +1,11 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sherad.Application.Common;
 using Sherad.Application.Repositories;
+using Timetable.Application.Commands;
+using Timetable.Application.Handlers;
 using Timetable.Domain.Entitys;
 using Timetable.Infastructure.Data.DbContexts;
 using Timetable.Infastructure.Repositories;
@@ -40,8 +43,31 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+builder.Services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssemblies(
+
+        typeof(AddTimetableHandler).Assembly,
+        typeof(AddTimetableCommand).Assembly
+
+        );
+});
+
 builder.Services.AddAuthentication("RabbitMQ")
     .AddScheme<AuthenticationSchemeOptions, RabbitMqJwtAuthenticationHandler>("RabbitMQ", null);
+
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("rabbitmq", h =>
+        {
+            h.Username("Admin");
+            h.Password("Frostwert234Z");
+        });
+    });
+});
 
 builder.Services.AddDbContext<TimetableDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
