@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Sherad\Sherad.Application\Sherad.Application.csproj" />
     <ProjectReference Include="..\Timetable.Domain\Timetable.Domain.csproj" />
   </ItemGroup>

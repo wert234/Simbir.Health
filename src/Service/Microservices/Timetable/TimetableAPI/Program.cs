@@ -26,6 +26,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
+    option.EnableAnnotations();
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "TimetableAPI", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -85,6 +86,7 @@ builder.Services.AddDbContext<TimetableDbContext>(options => {
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, int>, TimetableRepository>();
 builder.Services.AddScoped<IValidator<AddTimetableCommand>, AddTimetableCommandValidator>();
+builder.Services.AddScoped<IValidator<UpdateTimetableCommand>, UpdateTimetableCommandValidator>();
 
 var app = builder.Build();
 

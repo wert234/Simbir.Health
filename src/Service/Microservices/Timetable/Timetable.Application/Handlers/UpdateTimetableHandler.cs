@@ -25,11 +25,11 @@ namespace Timetable.Application.Handlers
         {
             var timetable = await _timetableRepository.GetAsync(request.Id);
 
-            timetable.HospitalId = request.HospitalId == null ? timetable.HospitalId : (int)request.HospitalId;
-            timetable.DoctorId = request.DoctorId == null ? timetable.DoctorId : (int)request.DoctorId;
-            timetable.From = request.From == null ? timetable.From : (DateTimeOffset)request.From;
-            timetable.From = request.To == null ? timetable.To : (DateTimeOffset)request.To;
-            timetable.Room = request.Room == null ? timetable.Room : request.Room;
+            timetable.HospitalId = request.HospitalId;
+            timetable.DoctorId = request.DoctorId;
+            timetable.From = request.From;
+            timetable.To = request.To;
+            timetable.Room = request.Room;
 
             await _timetableRepository.UpdateAsync(timetable);
 
