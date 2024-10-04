@@ -34,5 +34,9 @@ namespace TimetableAPI.Controllers
                 command.From,
                 command.To,
                 command.Room));
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTimetable(int id)
+            => await _mediator.Send(new DeleteTimetableCommand(id));
     }
 }

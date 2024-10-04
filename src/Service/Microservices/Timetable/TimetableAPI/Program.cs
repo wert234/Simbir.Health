@@ -58,7 +58,13 @@ builder.Services.AddMediatR(options =>
     options.RegisterServicesFromAssemblies(
 
         typeof(AddTimetableHandler).Assembly,
-        typeof(AddTimetableCommand).Assembly
+        typeof(AddTimetableCommand).Assembly,
+
+        typeof(UpdateTimetableHandler).Assembly,
+        typeof(UpdateTimetableCommand).Assembly,
+
+        typeof(DeleteTimetableHandler).Assembly,
+        typeof(DeleteTimetableCommand).Assembly
 
         );
 });
