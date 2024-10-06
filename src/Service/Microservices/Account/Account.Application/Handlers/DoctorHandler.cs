@@ -1,5 +1,5 @@
 ﻿using Account.Application.Queries;
-using Account.Domain.DTOs;
+using Sherad.Domain.DTOs;
 using Account.Domain.Entitys.Account;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

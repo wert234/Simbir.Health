@@ -2,6 +2,7 @@
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Sherad.Domain.DTOs;
 using Sherad.Domain.Entitys;
 
 namespace HospitalAPI.Consumers
@@ -22,7 +23,7 @@ namespace HospitalAPI.Consumers
 
             if(result != null && result.StatusCode == StatusCodes.Status200OK)
             {
-                await context.RespondAsync(new GetHospitalResponse(true));
+                await context.RespondAsync(new GetHospitalResponse(true, (HospitalDTO)result.Value));
             }
             else
             {

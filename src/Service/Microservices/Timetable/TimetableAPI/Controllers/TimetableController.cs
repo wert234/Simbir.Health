@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Timetable.Application.Commands;
+using Timetable.Application.Queries;
 using IMediator = MediatR.IMediator;
 
 namespace TimetableAPI.Controllers
@@ -46,5 +47,10 @@ namespace TimetableAPI.Controllers
         [HttpDelete("Hospital/{id}")]
         public async Task<IActionResult> DeleteHospitalTimetables(int id)
             => await _mediator.Send(new DeleteHospitalTimetablesCommand(id));
+
+        [Authorize]
+        [HttpGet("Hospital/{id}")]
+        public async Task<IActionResult> GetHospitalTimetables(int id, string? from, string? to)
+            => await _mediator.Send(new GetHospitalTimetableQuery(id, from, to));
     }
 }

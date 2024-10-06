@@ -1,9 +1,9 @@
 ﻿using Account.Application.Queries;
-using Account.Domain.DTOs;
 using Account.Domain.Entitys.Account;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sherad.Application.Repositories;
+using Sherad.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

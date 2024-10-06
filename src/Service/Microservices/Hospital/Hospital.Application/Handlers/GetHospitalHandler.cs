@@ -1,4 +1,5 @@
 ﻿using Hospital.Application.Queries;
+using Sherad.Domain.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sherad.Application.Repositories;
@@ -23,12 +24,12 @@ namespace Hospital.Application.Handlers
         {
             var hospital = await _hospitalRepository.GetAsync(request.Id);
 
-            return new OkObjectResult(new Dictionary<string, object>
+            return new OkObjectResult(new HospitalDTO
             {
-                {"Id", hospital.Id},
-                {"Name", hospital.Name},
-                {"Address", hospital.Address},
-                {"ContactPhone", hospital.ContactPhone},
+                Id = hospital.Id,
+                Name = hospital.Name,
+                Address = hospital.Address,
+                ContactPhone = hospital.ContactPhone,
             });
         }
     }

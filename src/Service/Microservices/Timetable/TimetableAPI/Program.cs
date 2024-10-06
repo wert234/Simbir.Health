@@ -10,6 +10,7 @@ using Sherad.Application.Repositories;
 using System.Text.Json.Serialization;
 using Timetable.Application.Commands;
 using Timetable.Application.Handlers;
+using Timetable.Application.Queries;
 using Timetable.Application.Validators;
 using Timetable.Domain.Entitys;
 using Timetable.Infastructure.Data.DbContexts;
@@ -70,7 +71,10 @@ builder.Services.AddMediatR(options =>
         typeof(DeleteDoctorTimetablesCommand).Assembly,
 
         typeof(DeleteHospitalTimetablesHandler).Assembly,
-        typeof(DeleteHospitalTimetablesCommand).Assembly
+        typeof(DeleteHospitalTimetablesCommand).Assembly,
+
+        typeof(GetHospitalTimetableHandler).Assembly,
+        typeof(GetHospitalTimetableQuery).Assembly
         );
 });
 
