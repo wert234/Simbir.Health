@@ -50,7 +50,7 @@ namespace TimetableAPI.Controllers
 
         [Authorize]
         [HttpGet("Hospital/{id}")]
-        public async Task<IActionResult> GetHospitalTimetables(int id, string? from, string? to)
+        public async Task<IActionResult> GetHospitalTimetables(int id, DateTimeOffset? from, DateTimeOffset? to)
             => await _mediator.Send(new GetHospitalTimetableQuery(id, from, to));
     }
 }

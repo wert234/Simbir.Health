@@ -37,18 +37,18 @@ namespace Timetable.Application.Handlers
             GetHospitalTimetableQuery request, CancellationToken cancellationToken)
         {
 
-            if(request.From == "" || request.From == null)
-                request.From = DateTimeOffset.MinValue.ToString();
+            if(request.From == null)
+                request.From = DateTimeOffset.MinValue;
             
-            if (request.To == "" || request.To == null)
-                request.To = DateTimeOffset.MaxValue.ToString();
+            if (request.To == null)
+                request.To = DateTimeOffset.MaxValue;
             
 
             var timetables = (await _timetableRepository
                 .GetAllAsync())
                 .Where(timetable => timetable.HospitalId == request.Id &&
-                timetable.From >= DateTimeOffset.Parse(request.From) &&
-                timetable.To <= DateTimeOffset.Parse(request.To))
+                timetable.From >= request.From &&
+                timetable.To <= request.To)
                 .ToList();
 
             var hospetal = await _hospitalsClient.GetResponse<GetHospitalResponse>(new GetHospitalRequset(request.Id));

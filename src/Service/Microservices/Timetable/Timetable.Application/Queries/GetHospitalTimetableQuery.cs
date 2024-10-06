@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Timetable.Application.Queries
 {
-    public class GetHospitalTimetableQuery(int id, string? from, string? to) : IRequest<IActionResult>
+    public class GetHospitalTimetableQuery(int id, DateTimeOffset? from, DateTimeOffset? to) : IRequest<IActionResult>
     {
         public int Id { get; set; } = id;
-        public string? From { get; set; } = from;
-        public string? To { get; set; } = to;
+        public DateTimeOffset? From { get; set; } = from;
+        public DateTimeOffset? To { get; set; } = to;
     }
 }
