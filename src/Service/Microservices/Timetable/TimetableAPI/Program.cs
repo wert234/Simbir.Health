@@ -100,6 +100,7 @@ builder.Services.AddScoped<IValidator<AddTimetableCommand>, AddTimetableCommandV
 builder.Services.AddScoped<IValidator<UpdateTimetableCommand>, UpdateTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<DeleteTimetableCommand>, DeleteTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<DeleteDoctorTimetablesCommand>, DeleteDoctorTimetablesCommandValidator>();
+builder.Services.AddScoped<IValidator<DeleteHospitalTimetablesCommand>, DeleteHospitalTimetablesCommandValidator>();
 
 var app = builder.Build();
 

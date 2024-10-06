@@ -45,6 +45,6 @@ namespace TimetableAPI.Controllers
 
         [HttpDelete("Hospital/{id}")]
         public async Task<IActionResult> DeleteHospitalTimetables(int id)
-    => await _mediator.Send(new DeleteHospitalTimetablesCommand(id));
+            => await _mediator.Send(new DeleteHospitalTimetablesCommand(id));
     }
 }
