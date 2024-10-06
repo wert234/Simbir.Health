@@ -64,8 +64,10 @@ builder.Services.AddMediatR(options =>
         typeof(UpdateTimetableCommand).Assembly,
 
         typeof(DeleteTimetableHandler).Assembly,
-        typeof(DeleteTimetableCommand).Assembly
+        typeof(DeleteTimetableCommand).Assembly,
 
+        typeof(DeleteDoctorTimetablesHandler).Assembly,
+        typeof(DeleteDoctorTimetablesCommand).Assembly
         );
 });
 
@@ -94,6 +96,7 @@ builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, int>,
 builder.Services.AddScoped<IValidator<AddTimetableCommand>, AddTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateTimetableCommand>, UpdateTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<DeleteTimetableCommand>, DeleteTimetableCommandValidator>();
+builder.Services.AddScoped<IValidator<DeleteDoctorTimetablesCommand>, DeleteDoctorTimetablesCommandValidator>();
 
 var app = builder.Build();
 
