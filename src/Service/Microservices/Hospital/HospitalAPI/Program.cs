@@ -81,6 +81,7 @@ builder.Services.AddMediatR(options =>
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<HospitalConsumer>();
+    x.AddConsumer<RoomConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -93,6 +94,11 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("hospital_queue", options =>
         {
             options.ConfigureConsumer<HospitalConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("room_queue", options =>
+        {
+            options.ConfigureConsumer<RoomConsumer>(context);
         });
     });
 });
