@@ -74,6 +74,9 @@ builder.Services.AddMediatR(options =>
         typeof(DeleteHospitalTimetablesCommand).Assembly,
 
         typeof(GetHospitalTimetableHandler).Assembly,
+        typeof(GetHospitalTimetableQuery).Assembly,
+
+        typeof(GetDoctorTimetableHandler).Assembly,
         typeof(GetHospitalTimetableQuery).Assembly
         );
 });
