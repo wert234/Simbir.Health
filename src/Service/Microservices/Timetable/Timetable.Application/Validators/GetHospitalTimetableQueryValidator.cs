@@ -32,7 +32,6 @@ namespace Timetable.Application.Validators
                 RuleFor(x => x.From)
                        .Must(date =>
                        {
-                           var t = TimetableValidationUtils.IsValidDateTimeFormat((DateTimeOffset)date);
                            if (date != null)
                                return TimetableValidationUtils.IsValidDateTimeFormat((DateTimeOffset)date);
                            else

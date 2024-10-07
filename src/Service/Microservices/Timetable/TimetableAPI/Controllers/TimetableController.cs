@@ -10,7 +10,6 @@ namespace TimetableAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin,Manager")]
     public class TimetableController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -22,10 +21,12 @@ namespace TimetableAPI.Controllers
         }
 
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         public async Task<IActionResult> AddTimetable(AddTimetableCommand command)
             => await _mediator.Send(command);
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTimetable(int id, UpdateTimetableCommand command)
             => await _mediator.Send(new UpdateTimetableCommand
@@ -36,14 +37,17 @@ namespace TimetableAPI.Controllers
                 command.To,
                 command.Room));
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTimetable(int id)
             => await _mediator.Send(new DeleteTimetableCommand(id));
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("Doctor/{id}")]
         public async Task<IActionResult> DeleteDoctorTimetables(int id)
             => await _mediator.Send(new DeleteDoctorTimetablesCommand(id));
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("Hospital/{id}")]
         public async Task<IActionResult> DeleteHospitalTimetables(int id)
             => await _mediator.Send(new DeleteHospitalTimetablesCommand(id));
