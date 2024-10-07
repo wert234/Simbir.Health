@@ -77,7 +77,10 @@ builder.Services.AddMediatR(options =>
         typeof(GetHospitalTimetableQuery).Assembly,
 
         typeof(GetDoctorTimetableHandler).Assembly,
-        typeof(GetHospitalTimetableQuery).Assembly
+        typeof(GetHospitalTimetableQuery).Assembly,
+
+        typeof(GetRoomTimetablesHandler).Assembly,
+        typeof(GetRoomTimetablesQuery).Assembly
         );
 });
 

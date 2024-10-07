@@ -28,7 +28,8 @@ namespace TimetableAPI.Controllers
 
         [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTimetable(int id, UpdateTimetableCommand command)
+        public async Task<IActionResult> UpdateTimetable(int id,
+            UpdateTimetableCommand command)
             => await _mediator.Send(new UpdateTimetableCommand
                 (id, 
                 command.DoctorId,
@@ -54,12 +55,20 @@ namespace TimetableAPI.Controllers
 
         [Authorize]
         [HttpGet("Hospital/{id}")]
-        public async Task<IActionResult> GetHospitalTimetables(int id, DateTimeOffset? from, DateTimeOffset? to)
+        public async Task<IActionResult> GetHospitalTimetables(int id,
+            DateTimeOffset? from, DateTimeOffset? to)
             => await _mediator.Send(new GetHospitalTimetableQuery(id, from, to));
 
         [Authorize]
         [HttpGet("Doctor/{id}")]
-        public async Task<IActionResult> GetDoctorTimetables(int id, DateTimeOffset? from, DateTimeOffset? to)
+        public async Task<IActionResult> GetDoctorTimetables(int id,
+            DateTimeOffset? from, DateTimeOffset? to)
             => await _mediator.Send(new GetDoctorTimetableQuery(id, from, to));
+
+        [Authorize(Roles = "Admin,Manager,Doctor")]
+        [HttpGet("Hospital/{id}/Room/{room}")]
+        public async Task<IActionResult> GetRoomTimetables(int id, string room,
+            DateTimeOffset? from, DateTimeOffset? to)
+            => await _mediator.Send(new GetRoomTimetablesQuery(id, room, from, to));
     }
 }
