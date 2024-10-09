@@ -70,5 +70,10 @@ namespace TimetableAPI.Controllers
         public async Task<IActionResult> GetRoomTimetables(int id, string room,
             DateTimeOffset? from, DateTimeOffset? to)
             => await _mediator.Send(new GetRoomTimetablesQuery(id, room, from, to));
+
+        [Authorize]
+        [HttpGet("{id}/Appointments")]
+        public async Task<IActionResult> GetAppointments(int id)
+            => await _mediator.Send(new GetAppointmentsQuery(id));
     }
 }

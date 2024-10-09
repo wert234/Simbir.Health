@@ -70,7 +70,7 @@ builder.Services.AddMediatR(options =>
         typeof(DeleteDoctorTimetablesHandler).Assembly,
         typeof(DeleteDoctorTimetablesCommand).Assembly,
 
-        typeof(DeleteHospitalTimetablesHandler).Assembly,
+        typeof(DeleteHospitalTimetablesHandler).Assembly, 
         typeof(DeleteHospitalTimetablesCommand).Assembly,
 
         typeof(GetHospitalTimetableHandler).Assembly,
@@ -80,7 +80,10 @@ builder.Services.AddMediatR(options =>
         typeof(GetHospitalTimetableQuery).Assembly,
 
         typeof(GetRoomTimetablesHandler).Assembly,
-        typeof(GetRoomTimetablesQuery).Assembly
+        typeof(GetRoomTimetablesQuery).Assembly,
+
+        typeof(GetAppointmentsHandler).Assembly,
+        typeof(GetAppointmentsQuery).Assembly
         );
 });
 
@@ -106,6 +109,7 @@ builder.Services.AddDbContext<TimetableDbContext>(options => {
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IRepository<Timetable.Domain.Entitys.Timetable, int>, TimetableRepository>();
+builder.Services.AddScoped<IRepository<Appointment, int>, AppointmentRepository>();
 builder.Services.AddScoped<IValidator<AddTimetableCommand>, AddTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateTimetableCommand>, UpdateTimetableCommandValidator>();
 builder.Services.AddScoped<IValidator<DeleteTimetableCommand>, DeleteTimetableCommandValidator>();
