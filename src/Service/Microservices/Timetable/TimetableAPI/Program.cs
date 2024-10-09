@@ -118,6 +118,7 @@ builder.Services.AddScoped<IValidator<DeleteHospitalTimetablesCommand>, DeleteHo
 builder.Services.AddScoped<IValidator<GetHospitalTimetableQuery>, GetHospitalTimetableQueryValidator>();
 builder.Services.AddScoped<IValidator<GetDoctorTimetableQuery>, GetDoctorTimetableQueryValidator>();
 builder.Services.AddScoped<IValidator<GetRoomTimetablesQuery>, GetRoomTimetablesQueryValidator>();
+builder.Services.AddScoped<IValidator<GetAppointmentsQuery>, GetAppointmentsQueryValidator>();
 
 var app = builder.Build();
 
