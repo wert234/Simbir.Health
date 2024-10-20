@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Timetable.Application.Commands;
 using Timetable.Application.Queries;
 using IMediator = MediatR.IMediator;
@@ -80,5 +81,11 @@ namespace TimetableAPI.Controllers
         [HttpPost("{id}/Appointments")]
         public async Task<IActionResult> GetAppointments(int id, DateTimeOffset time)
             => await _mediator.Send(new AddAppointmentsCommand(id, time));
+
+        [Authorize(Roles = "Admin,Manager,User")]
+        [HttpDelete("DeleteAppointment/{id}")]
+        public async Task<IActionResult> DeleteAppointment(int id)
+            => await _mediator.Send(new DeleteAppointmentCommand(id, 
+                int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)));
     }
 }

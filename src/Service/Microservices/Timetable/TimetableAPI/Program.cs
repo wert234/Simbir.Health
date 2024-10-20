@@ -83,7 +83,10 @@ builder.Services.AddMediatR(options =>
         typeof(GetRoomTimetablesQuery).Assembly,
 
         typeof(GetAppointmentsHandler).Assembly,
-        typeof(GetAppointmentsQuery).Assembly
+        typeof(GetAppointmentsQuery).Assembly,
+
+        typeof(DeleteAppointmentHandler).Assembly,
+        typeof(DeleteAppointmentCommand).Assembly
         );
 });
 
