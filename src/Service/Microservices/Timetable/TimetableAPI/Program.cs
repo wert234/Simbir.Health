@@ -123,6 +123,7 @@ builder.Services.AddScoped<IValidator<GetDoctorTimetableQuery>, GetDoctorTimetab
 builder.Services.AddScoped<IValidator<GetRoomTimetablesQuery>, GetRoomTimetablesQueryValidator>();
 builder.Services.AddScoped<IValidator<GetAppointmentsQuery>, GetAppointmentsQueryValidator>();
 builder.Services.AddScoped<IValidator<AddAppointmentsCommand>, AddAppointmentsCommandValidator>();
+builder.Services.AddScoped<IValidator<DeleteAppointmentCommand>, DeleteAppointmentCommandValidator>();
 
 var app = builder.Build();
 

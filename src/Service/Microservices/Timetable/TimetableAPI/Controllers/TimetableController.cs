@@ -85,7 +85,9 @@ namespace TimetableAPI.Controllers
         [Authorize(Roles = "Admin,Manager,User")]
         [HttpDelete("DeleteAppointment/{id}")]
         public async Task<IActionResult> DeleteAppointment(int id)
-            => await _mediator.Send(new DeleteAppointmentCommand(id, 
-                int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)));
+        {
+            return await _mediator.Send(new DeleteAppointmentCommand(id,
+                int.Parse(User.Claims.Last().Value)));
+        }
     }
 }

@@ -34,10 +34,13 @@ namespace Account.Application.Handlers
                 .FirstOrDefault(user => user.Username == request.Username &&
                 BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.PasswordHash));
 
-
-            var accessToken = _tokenGenerator.GenerateAccessToken(user, user.Roles
+            var claims = user.Roles
                 .Select(role => new Claim(ClaimTypes.Role, role))
-                .ToList());
+                .ToList();
+
+            claims.Add(new Claim(ClaimTypes.Role, user.Id.ToString()));
+
+            var accessToken = _tokenGenerator.GenerateAccessToken(user, claims);
 
             var refreshToken = _tokenGenerator.GenerateRefreshToken();
 
