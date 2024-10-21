@@ -1,4 +1,7 @@
+using History.Application.Handlers;
+using History.Application.Queries;
 using History.Infastructure.Data.DbContexts;
+using History.Infastructure.Repositories;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
@@ -6,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sherad.Application.Behaviors;
 using Sherad.Application.Common;
+using Sherad.Application.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
 {
     option.EnableAnnotations();
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "HospetalsAPI", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "HistoryAPI", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -40,7 +44,6 @@ builder.Services.AddSwaggerGen(option =>
         }
     });
 });
-
 builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
@@ -52,6 +55,14 @@ builder.Services.AddMassTransit(x =>
         });
     });
 });
+builder.Services.AddMediatR(option =>
+{
+    option.RegisterServicesFromAssemblies
+    (
+        typeof(GetHistoryQueró).Assembly,
+        typeof(GetHistoryHandler).Assembly
+    );
+});
 
 builder.Services.AddDbContext<HistoryDbContext>(options =>
 {
@@ -61,6 +72,7 @@ builder.Services.AddDbContext<HistoryDbContext>(options =>
 builder.Services.AddAuthentication("RabbitMQ")
     .AddScheme<AuthenticationSchemeOptions, RabbitMqJwtAuthenticationHandler>("RabbitMQ", null);
 
+builder.Services.AddScoped<IRepository<History.Domain.Entitys.History, int>, HistoryRepository>();
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 var app = builder.Build();
