@@ -191,8 +191,57 @@ services:
         - timetable_data:/var/lib/postgresql/data
         
   #--------------------------------------------------------
+    
+  history:
+
+    container_name: History
+
+    image: ${DOCKER_REGISTRY-}history
+
+    build:
+      context: .
+      dockerfile: src/Service/Microservices/History/HistoryAPI/Dockerfile
+
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_HTTP_PORTS=5004
+
+    ports:
+        - "5004:5004"
+  
+    networks:
+        - connection
+    
+    depends_on:
+        - historyDatabase
+        
+  #--------------------------------------------------------
+
+  historyDatabase:
+
+    container_name: HistoryDatabase
+
+    image: postgres:latest
+
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: Frostwert234Z
+        POSTGRES_DB: HistoryDatabase
+        PGPORT: 5044
+  
+    ports:
+        - "5044:5044"
+
+    networks:
+        - connection
+    
+    volumes:
+        - history_data:/var/lib/postgresql/data
+        
+  #--------------------------------------------------------
 
 volumes:
     account_data:
     hospital_data:
     timetable_data:
+    history_data:
