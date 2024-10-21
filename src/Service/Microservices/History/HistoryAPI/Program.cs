@@ -1,3 +1,4 @@
+using History.Infastructure.Data.DbContexts;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
@@ -52,9 +53,10 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-//builder.Services.AddDbContext<HistoryDbContext>(options => {
-//    options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
-//});
+builder.Services.AddDbContext<HistoryDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Connection"));
+});
 
 builder.Services.AddAuthentication("RabbitMQ")
     .AddScheme<AuthenticationSchemeOptions, RabbitMqJwtAuthenticationHandler>("RabbitMQ", null);
@@ -63,11 +65,11 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 
 var app = builder.Build();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var dbContext = scope.ServiceProvider.GetRequiredService<HistoryDbContext>();
-//    dbContext.Database.Migrate();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<HistoryDbContext>();
+    dbContext.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
