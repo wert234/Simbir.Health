@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using MassTransit;
 using Sherad.Application.Repositories;
+using Sherad.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,9 @@ namespace Timetable.Application.Validators
 {
     public class DeleteAppointmentCommandValidator : AbstractValidator<DeleteAppointmentCommand>
     {
-        public DeleteAppointmentCommandValidator(IRepository<Appointment, int> appointmentRepository)
+        public DeleteAppointmentCommandValidator(
+            IRepository<Appointment, int> appointmentRepository,
+            IRequestClient<GetUserExistRequest> client)
         {
             RuleFor(appointment => appointment)
                 .MustAsync(async (appointment, c) =>
@@ -23,11 +27,22 @@ namespace Timetable.Application.Validators
                 .WithMessage("Такой записи не сущесвует")
                 .DependentRules(() =>
                 {
-                    RuleFor(appointment => appointment)
-                        .MustAsync(async (appointment, c) =>
+                    RuleFor(query => query)
+                        .MustAsync(async (query, c) =>
                         {
-                            return (await appointmentRepository
-                            .GetAsync(appointment.AppointmentId)).UserId == appointment.UserId;
+                            var result = (await client.GetResponse<GetUserExistResponse>(new GetUserExistRequest(query.UserId))).Message;
+                            var appointment = (await appointmentRepository
+                            .GetAllAsync())
+                            .First(findAppointment => findAppointment.Id == query.AppointmentId);
+
+                            if (result.Roles.Contains("User"))
+                            {
+                                return appointment.UserId == query.UserId;
+                            }
+                            else
+                            {
+                                return true;
+                            }
                         })
                         .WithMessage("Нет доступа");
                 });
