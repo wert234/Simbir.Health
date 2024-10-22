@@ -19,9 +19,9 @@ namespace HistoryAPI.Controllers
             _mediator = mediator;
         }
 
-
+        [Authorize(Roles ="User,Doctor")]
         [HttpGet("Account/{id}")]
         public async Task<IActionResult> GetHistory(int id)
-            => await _mediator.Send(new GetHistoryQuerу(id));
+            => await _mediator.Send(new GetHistoryQuerу(id, int.Parse(User.Claims.Last().Value)));
     }
 }

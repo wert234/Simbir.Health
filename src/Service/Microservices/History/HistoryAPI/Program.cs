@@ -1,5 +1,7 @@
+using FluentValidation;
 using History.Application.Handlers;
 using History.Application.Queries;
+using History.Application.Validators;
 using History.Infastructure.Data.DbContexts;
 using History.Infastructure.Repositories;
 using MassTransit;
@@ -74,6 +76,7 @@ builder.Services.AddAuthentication("RabbitMQ")
 
 builder.Services.AddScoped<IRepository<History.Domain.Entitys.History, int>, HistoryRepository>();
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+builder.Services.AddScoped<IValidator<GetHistoryQueró>, GetHistoryQueróValidator>();
 
 var app = builder.Build();
 

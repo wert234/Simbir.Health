@@ -26,7 +26,7 @@ namespace History.Application.Handlers
         {
             return new OkObjectResult((await _repository
                 .GetAllAsync())
-                .Where(history => history.PacientId == request.Id)
+                .Where(history => history.PacientId == request.UserId)
                 .Select(history => new Dictionary<string, object>
                 {
                     {"Дата", history.Date },

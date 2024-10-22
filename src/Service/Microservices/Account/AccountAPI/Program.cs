@@ -146,6 +146,7 @@ builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<AuthConsumer>();
     x.AddConsumer<AccountsConsumer>();
+    x.AddConsumer<UserConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -163,6 +164,11 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("accounts_queue", e =>
         {
             e.ConfigureConsumer<AccountsConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("user_queue", e =>
+        {
+            e.ConfigureConsumer<UserConsumer>(context);
         });
     });
 });
