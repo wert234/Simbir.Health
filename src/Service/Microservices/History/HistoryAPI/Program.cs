@@ -62,7 +62,9 @@ builder.Services.AddMediatR(option =>
     option.RegisterServicesFromAssemblies
     (
         typeof(GetHistoryQueró).Assembly,
-        typeof(GetHistoryHandler).Assembly
+        typeof(GetHistoryHandler).Assembly,
+        typeof(GetDetailHistoryQueró).Assembly,
+        typeof(GetDetailHistoryHandler).Assembly
     );
 });
 
