@@ -79,6 +79,7 @@ builder.Services.AddAuthentication("RabbitMQ")
 builder.Services.AddScoped<IRepository<History.Domain.Entitys.History, int>, HistoryRepository>();
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IValidator<GetHistoryQueró>, GetHistoryQueróValidator>();
+builder.Services.AddScoped<IValidator<GetDetailHistoryQueró>, GetDetailHistoryQueróValidator>();
 
 var app = builder.Build();
 
