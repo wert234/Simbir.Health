@@ -1,4 +1,5 @@
 using FluentValidation;
+using History.Application.Commands;
 using History.Application.Handlers;
 using History.Application.Queries;
 using History.Application.Validators;
@@ -63,8 +64,12 @@ builder.Services.AddMediatR(option =>
     (
         typeof(GetHistoryQueró).Assembly,
         typeof(GetHistoryHandler).Assembly,
+
         typeof(GetDetailHistoryQueró).Assembly,
-        typeof(GetDetailHistoryHandler).Assembly
+        typeof(GetDetailHistoryHandler).Assembly,
+
+        typeof(AddHistoryCommand).Assembly,
+        typeof(AddHistoryHandler).Assembly
     );
 });
 

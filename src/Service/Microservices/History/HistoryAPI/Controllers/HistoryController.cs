@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using IMediator = MediatR.IMediator;
+using History.Application.Commands;
 
 namespace HistoryAPI.Controllers
 {
@@ -28,5 +29,10 @@ namespace HistoryAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDetailHistory(int id)
             => await _mediator.Send(new GetDetailHistoryQuerу(id, int.Parse(User.Claims.Last().Value)));
+
+        [Authorize(Roles = "Admin,Manager,Doctor")]
+        [HttpPost()]
+        public async Task<IActionResult> AddHistory(AddHistoryCommand command)
+            => await _mediator.Send(command);
     }
 }
