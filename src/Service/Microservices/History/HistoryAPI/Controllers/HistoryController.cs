@@ -20,7 +20,7 @@ namespace HistoryAPI.Controllers
             _mediator = mediator;
         }
 
-        [Authorize(Roles ="User,Doctor")]
+        [Authorize(Roles = "User,Doctor")]
         [HttpGet("Account/{id}")]
         public async Task<IActionResult> GetHistory(int id)
             => await _mediator.Send(new GetHistoryQuerу(id, int.Parse(User.Claims.Last().Value)));
@@ -34,5 +34,19 @@ namespace HistoryAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddHistory(AddHistoryCommand command)
             => await _mediator.Send(command);
+
+        [Authorize(Roles = "Admin,Manager,Doctor")]
+        [HttpPut("{id}")]
+                public async Task<IActionResult> UpdateHistory(UpdateHistoryCommand command, int id)
+            => await _mediator.Send(new UpdateHistoryCommand
+            {
+                Id = id,
+                Data = command.Data,
+                Date = command.Date,
+                DoctorId = command.DoctorId,
+                HospitalId = command.HospitalId,
+                PacientId = command.PacientId,
+                Room = command.Room,
+            });
     }
 }

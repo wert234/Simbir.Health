@@ -69,7 +69,11 @@ builder.Services.AddMediatR(option =>
         typeof(GetDetailHistoryHandler).Assembly,
 
         typeof(AddHistoryCommand).Assembly,
-        typeof(AddHistoryHandler).Assembly
+        typeof(AddHistoryHandler).Assembly,
+
+
+        typeof(UpdateHistoryCommand).Assembly,
+        typeof(UpdateHistoryHandler).Assembly
     );
 });
 
