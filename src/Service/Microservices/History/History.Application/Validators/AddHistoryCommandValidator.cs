@@ -23,7 +23,7 @@ namespace History.Application.Validators
                {
                    var result = (await client
                    .GetResponse<GetUserExistResponse>(new GetUserExistRequest(id))).Message;
-                   return result.isExist;
+                   return result.isExist && result.Roles.Contains("User");
                })
                .WithMessage("Пациента не существует");
 
