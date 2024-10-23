@@ -31,7 +31,7 @@ namespace HistoryAPI.Controllers
             => await _mediator.Send(new GetDetailHistoryQuerу(id, int.Parse(User.Claims.Last().Value)));
 
         [Authorize(Roles = "Admin,Manager,Doctor")]
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> AddHistory(AddHistoryCommand command)
             => await _mediator.Send(command);
     }

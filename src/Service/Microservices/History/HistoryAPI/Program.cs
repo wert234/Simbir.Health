@@ -85,6 +85,7 @@ builder.Services.AddScoped<IRepository<History.Domain.Entitys.History, int>, His
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<IValidator<GetHistoryQueró>, GetHistoryQueróValidator>();
 builder.Services.AddScoped<IValidator<GetDetailHistoryQueró>, GetDetailHistoryQueróValidator>();
+builder.Services.AddScoped<IValidator<AddHistoryCommand>, AddHistoryCommandValidator>();
 
 var app = builder.Build();
 

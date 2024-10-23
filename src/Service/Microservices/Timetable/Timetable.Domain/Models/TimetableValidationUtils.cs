@@ -10,7 +10,10 @@ namespace Timetable.Domain.Models
     {
         public static bool IsValidDateTimeFormat(DateTimeOffset dateTime)
         {
-            return dateTime.ToString("yyyy-MM-ddTHH:mm:ssZ") == dateTime.ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string format = "yyyy-MM-ddTHH:mm:ssZ";
+            string dateTimeString = dateTime.ToString("yyyy-MM-ddTHH:mm:ssZ");
+
+            return DateTimeOffset.TryParseExact(dateTimeString, format, null, System.Globalization.DateTimeStyles.AssumeUniversal, out _);
         }
 
         public static bool IsValidDateTimeOffset(DateTimeOffset dateTime)
