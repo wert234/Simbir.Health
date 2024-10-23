@@ -39,7 +39,9 @@ namespace History.Infastructure.Repositories
 
         public async Task<Domain.Entitys.History> GetAsync(int id)
         {
-            return await _context.Historys.FirstOrDefaultAsync(hospital => hospital.Id == id);
+            return await _context.Historys
+                .AsNoTracking()
+                .FirstOrDefaultAsync(hospital => hospital.Id == id);
         }
 
         public async Task SaveAsync(CancellationToken token = default)

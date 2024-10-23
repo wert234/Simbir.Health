@@ -90,6 +90,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 builder.Services.AddScoped<IValidator<GetHistoryQueró>, GetHistoryQueróValidator>();
 builder.Services.AddScoped<IValidator<GetDetailHistoryQueró>, GetDetailHistoryQueróValidator>();
 builder.Services.AddScoped<IValidator<AddHistoryCommand>, AddHistoryCommandValidator>();
+builder.Services.AddScoped<IValidator<UpdateHistoryCommand>, UpdateHistoryCommandValidator>();
 
 var app = builder.Build();
 
