@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace History.Application.Validators
 {
-    public class GetDetailHistoryQuerуValidator : AbstractValidator<GetDetailHistoryQuerу>
+    public class GetDetailHistoryQueryValidator : AbstractValidator<GetDetailHistoryQuery>
     {
-        public GetDetailHistoryQuerуValidator(
+        public GetDetailHistoryQueryValidator(
             IRepository<Domain.Entitys.History, int> historyRepository,
             IRequestClient<GetUserExistRequest> client)
         {

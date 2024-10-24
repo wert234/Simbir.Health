@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace History.Application.Handlers
 {
-    public class GetHistoryHandler : IRequestHandler<GetHistoryQuerу, IActionResult>
+    public class GetHistoryHandler : IRequestHandler<GetHistoryQuery, IActionResult>
     {
         private readonly IRepository<Domain.Entitys.History, int> _repository;
 
@@ -22,7 +22,7 @@ namespace History.Application.Handlers
         }
 
 
-        public async Task<IActionResult> Handle(GetHistoryQuerу request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Handle(GetHistoryQuery request, CancellationToken cancellationToken)
         {
             return new OkObjectResult((await _repository
                 .GetAllAsync())

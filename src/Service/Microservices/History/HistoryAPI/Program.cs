@@ -62,10 +62,10 @@ builder.Services.AddMediatR(option =>
 {
     option.RegisterServicesFromAssemblies
     (
-        typeof(GetHistoryQueró).Assembly,
+        typeof(GetHistoryQuery).Assembly,
         typeof(GetHistoryHandler).Assembly,
 
-        typeof(GetDetailHistoryQueró).Assembly,
+        typeof(GetDetailHistoryQuery).Assembly,
         typeof(GetDetailHistoryHandler).Assembly,
 
         typeof(AddHistoryCommand).Assembly,
@@ -87,8 +87,8 @@ builder.Services.AddAuthentication("RabbitMQ")
 
 builder.Services.AddScoped<IRepository<History.Domain.Entitys.History, int>, HistoryRepository>();
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-builder.Services.AddScoped<IValidator<GetHistoryQueró>, GetHistoryQueróValidator>();
-builder.Services.AddScoped<IValidator<GetDetailHistoryQueró>, GetDetailHistoryQueróValidator>();
+builder.Services.AddScoped<IValidator<GetHistoryQuery>, GetHistoryQueryValidator>();
+builder.Services.AddScoped<IValidator<GetDetailHistoryQuery>, GetDetailHistoryQueryValidator>();
 builder.Services.AddScoped<IValidator<AddHistoryCommand>, AddHistoryCommandValidator>();
 builder.Services.AddScoped<IValidator<UpdateHistoryCommand>, UpdateHistoryCommandValidator>();
 

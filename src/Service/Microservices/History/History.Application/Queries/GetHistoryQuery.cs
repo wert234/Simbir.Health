@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace History.Application.Queries
 {
-    public class GetHistoryQuerу(int userId, int requestUserId) : IRequest<IActionResult>
+    public class GetHistoryQuery(int userId, int requestUserId) : IRequest<IActionResult>
     {
         public int UserId { get; set; } = userId;
         public int RequestUserId { get; set; } = requestUserId;

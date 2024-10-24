@@ -13,9 +13,9 @@ using static MassTransit.ValidationResultExtensions;
 
 namespace History.Application.Validators
 {
-    public class GetHistoryQuerуValidator : AbstractValidator<GetHistoryQuerу>
+    public class GetHistoryQueryValidator : AbstractValidator<GetHistoryQuery>
     {
-        public GetHistoryQuerуValidator(
+        public GetHistoryQueryValidator(
             IRepository<Domain.Entitys.History, int> historyRepository,
             IRequestClient<GetUserExistRequest> client)
         {

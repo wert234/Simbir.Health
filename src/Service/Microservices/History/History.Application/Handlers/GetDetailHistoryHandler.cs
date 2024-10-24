@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace History.Application.Handlers
 {
-    public class GetDetailHistoryHandler : IRequestHandler<GetDetailHistoryQuerу, IActionResult>
+    public class GetDetailHistoryHandler : IRequestHandler<GetDetailHistoryQuery, IActionResult>
     {
         private readonly IRepository<Domain.Entitys.History, int> _repository;
         private readonly IRequestClient<GetUserRequest> _userClient;
@@ -30,7 +30,7 @@ namespace History.Application.Handlers
             _hospitalClient = hospitalClient;
         }
 
-        public async Task<IActionResult> Handle(GetDetailHistoryQuerу request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Handle(GetDetailHistoryQuery request, CancellationToken cancellationToken)
         {
             var histories = await _repository.GetAllAsync();
             var result = await Task.WhenAll(histories
